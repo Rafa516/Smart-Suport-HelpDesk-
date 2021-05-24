@@ -165,7 +165,7 @@ header{
 }
 
 .sidebar a:hover{
-  background: #688A08;
+  background: #01A9DB;
   color: #fff;
   text-decoration:none;
 
@@ -188,7 +188,7 @@ label #sidebar_btn{
 }
 
 label #sidebar_btn:hover{
-  color: #688A08;
+  color: #01A9DB;
 }
 
 #check:checked ~ .sidebar{
@@ -399,7 +399,7 @@ img {
   }
 
   .nav_bar .nav_btn:hover{
-    color: #688A08;
+    color: #01A9DB;
   }
 
   .mobile_nav_items{
@@ -420,7 +420,7 @@ img {
   }
 
   .mobile_nav_items a:hover{
-    background: #688A08;
+    background: #01A9DB;
     color: #fff;
     text-decoration:none;
   }

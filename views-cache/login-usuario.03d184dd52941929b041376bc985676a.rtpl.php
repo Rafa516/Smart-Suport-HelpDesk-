@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<?php if(!class_exists('Rain\Tpl')){exit;}?>	<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -27,13 +27,27 @@
 	<div class="form">
 		<form class="login-form" action="/login" method="post">
 
+			<?php if( $profileMsg != '' ){ ?>
+			<div class="alert alert-success">
+				<?php echo $profileMsg; ?>
+			</div>
+			<?php } ?>
+			<?php if( $error != '' ){ ?>
+			<div class="alert alert-danger">
+				<?php echo $error; ?>
+			</div>
+			<?php } ?>
+
+			<?php if( $errorRegister != '' ){ ?>
+			<div class="alert alert-danger">
+				<?php echo $errorRegister; ?>
+			</div>
+			<?php } ?>
+
 			
 
-
-		
-
 			<input    class="user-login" type="email" name="login" placeholder="Email" required>
-			<input class="user-login" type="password" name="despassword" placeholder="Senha" required>
+			<input class="user-login" type="password" name="senha" placeholder="Senha" required>
 			
 			
 			<input class="btn" type="submit" name="" value="Acessar">
@@ -46,32 +60,25 @@
 		<!--login form end-->
 		<!--signup form start-->
 
-		<form class="signup-form" action="/register" method="post"><br>
+		<form class="signup-form" action="/registro" method="post"><br>
 
 
 			<i style="font-size: 40px;color: #0B173B" class="fas fa-user-plus"></i><br>
 			Nome
-			<input class="user-input" id="person"type="text" name="person" placeholder="Digite seu nome" required>
+			<input class="user-input" id="nome"type="text" name="nome" placeholder="Digite seu nome" required>
 			Email
 			<input class="user-input" id="email"type="email" name="email" placeholder="Digite um e-mail válido " required>
 
-			Gênero
-			<select class="user-input" name="genre" id="genre">
-				<option value="1">Masculino</option>
-				<option value="2">Feminino</option>
-				<option value="3">Outros</option>
-			</select>
-
-			Empresa
-			<select class="user-input" name="store" id="store">
+			Loja/Empresa
+			<select class="user-input" name="loja" id="loja">
 	
-			<option value="Empresa 1">Empresa 1</option>
-            <option value="Empresa 2">Empresa 2</option>
-            <option value="Empresa 3">Empresa 3</option>
+			<option value="Loja/Empresa 1">Loja/Empresa 1</option>
+            <option value="Loja/Empresa 2">Loja/Empresa 2</option>
+            <option value="Loja/Empresa 3">Loja/Empresa 3</option>
 			</select>
 
 			Cargo
-			<select class="user-input" name="desfunction" id="desfunction">
+			<select class="user-input" name="cargo" id="cargo">
 		    <option value="Recursos Humanos">Recursos Humanos</option>
             <option value="Contabilidade">Contabilidade</option>
             <option value="Financeiro">Financeiro</option>
@@ -85,7 +92,7 @@
 			</select>
 
 			Senha
-			<input class="user-input"  id="despassword"type="password" name="despassword" placeholder="Digite uma senha" required>
+			<input class="user-input"  id="senha"type="password" name="senha" placeholder="Digite uma senha" required>
 			
 			<input class="btn" type="submit" name="" value="Registrar">
 

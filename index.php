@@ -12,6 +12,7 @@ $app->config('debug', true);
 
 require_once("controllers/app-user.php");
 require_once("controllers/app-admin.php");
+require_once("controllers/funcoes.php");
 
 
 

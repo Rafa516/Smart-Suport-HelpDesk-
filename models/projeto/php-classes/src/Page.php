@@ -3,7 +3,7 @@
 namespace Projeto;
 
 use \Rain\Tpl;
-use \Projeto\Model\User;
+use \Projeto\Model\Usuario;
 
 //Classe Page(Página, com os principais métodos de templates usado para a página de usuários comuns)
 class Page {
@@ -37,7 +37,7 @@ class Page {
 		$this->tpl = new Tpl();
 
 		//atribuindo os valores das váriaveis do Usuario na sessão.
-		
+		if (isset($_SESSION[Usuario::SESSION])) $this->tpl->assign("usuario", $_SESSION[Usuario::SESSION]);
 		
 		if ($this->options['data']) $this->setData($this->options['data']);
 
