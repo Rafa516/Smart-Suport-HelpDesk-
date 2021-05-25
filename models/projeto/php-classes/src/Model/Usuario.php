@@ -191,6 +191,89 @@ class Usuario extends Model {
 
 	}
 
+	//Método para deletar os usuários
+	public function delete()
+	{
+
+		$sql = new Sql();
+
+		$sql->query("DELETE FROM tb_usuarios WHERE id_usuario = :id_usuario", [
+			':id_usuario'=>$this->getid_usuario()
+		]);
+
+			if($this->getinadmin() == 1 && $this->getfoto() != 0){
+
+				$img = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 
+					"res" . DIRECTORY_SEPARATOR . 
+					"ft_perfil" . DIRECTORY_SEPARATOR . 
+					$this->getfoto();
+					unlink($img);
+			}
+			else{
+
+				$img = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 
+					"res" . DIRECTORY_SEPARATOR . 
+					"ft_perfil" . DIRECTORY_SEPARATOR . 
+					$this->getfoto();
+
+			}
+
+	}
+
+	//PAGINAÇÃO DA PÁGINA  USUÁRIOS
+	public  function getPageUsers($page = 1, $itemsPerPage = 4)
+	{
+
+		$start = ($page - 1) * $itemsPerPage;
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+			SELECT SQL_CALC_FOUND_ROWS *
+			FROM tb_usuarios  ORDER BY data_registro desc
+			LIMIT $start, $itemsPerPage");
+
+		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+
+		return [
+			'data'=>$results,
+			'total'=>(int)$resultTotal[0]["nrtotal"],
+			'pages'=>ceil($resultTotal[0]["nrtotal"] / $itemsPerPage)
+		];
+
+	}
+
+
+	//BUSCA DA PÁGINA USUÁRIOS
+
+	public static function getPageSearchUsers($search, $page = 1, $itemsPerPage = 4)
+	{
+
+		$start = ($page - 1) * $itemsPerPage;
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+			SELECT SQL_CALC_FOUND_ROWS *
+			FROM tb_usuarios
+			WHERE id_usuario LIKE :search  OR email LIKE :search OR nome LIKE :search OR login LIKE :search
+			OR cargo LIKE :search  OR loja LIKE :search 
+			ORDER BY data_registro DESC
+			LIMIT $start, $itemsPerPage;
+		", [
+			':search'=>'%'.$search.'%'
+		]);
+
+		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+
+		return [
+			'data'=>$results,
+			'total'=>(int)$resultTotal[0]["nrtotal"],
+			'pages'=>ceil($resultTotal[0]["nrtotal"] / $itemsPerPage)
+		];
+
+	}
+
 	
 
 

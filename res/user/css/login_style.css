@@ -27,7 +27,7 @@ body{
 	position: absolute;
 	width: 320px;
 	text-align: center;
-	margin-top: 15%;
+	margin-top: 10%;
 	
 }
 
@@ -45,7 +45,7 @@ body{
 
 .form .signup-form{
 	display: none;	
-	margin-top: 100px;
+	margin-top: 180px;
 	
 }
 .form .login-form{
