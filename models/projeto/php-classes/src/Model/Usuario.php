@@ -191,8 +191,86 @@ class Usuario extends Model {
 
 	}
 
+	 //Método para editar os dados do procedimento  do usuário comum.
+	public function editarUsuario()
+	{
+
+		$sql  = new Sql();
+
+		$results = $sql->select("CALL sp_editar_usuario(:id_usuario,:nome,:loja,:email,:inadmin,:cargo)",array(
+			":id_usuario"=>$this->getid_usuario(),
+			":nome"=>$this->getnome(),
+			":loja"=>$this->getloja(),
+			":email"=>$this->getemail(),
+			":inadmin"=>$this->getinadmin(),
+			":cargo"=>$this->getcargo(),
+		));
+
+		$this->setData($results[0]);
+
+	}
+
+	//Método para editar a imagem do perfil
+	public function alterarImagemPerfil()
+    {
+        $sql = new Sql();
+ 
+        $results = $sql->select('CALL sp_alterar_image_perfil(:id_usuario,:foto)', [
+            ":id_usuario" => $this->getid_usuario(),
+            ":foto"=>User::getImage($this->getfoto())
+           ,
+        ]);
+
+        if($this->getfoto() != 0)
+        {
+
+	        $img = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 
+				"res" . DIRECTORY_SEPARATOR . 
+				"ft_perfil" . DIRECTORY_SEPARATOR . 
+				$this->getfoto();
+				unlink($img);
+
+		}
+		else
+		{
+			$img = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 
+				"res" . DIRECTORY_SEPARATOR . 
+				"ft_perfil" . DIRECTORY_SEPARATOR . 
+			     $this->getfoto();
+			     $img;
+
+				
+		}
+
+    }
+	
+	//Método estático para nomear e mover a imagem para a pasta de destino 
+    public static function getImage($value)
+	{
+		$name_file = date('Ymdhms');
+
+		$directory = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 
+			"res" . DIRECTORY_SEPARATOR . 
+			"ft_perfil" . DIRECTORY_SEPARATOR .
+			$name_file;	
+			     			
+			$foto = isset($_FILES['foto']) ? $_FILES['foto'] : FALSE;
+			
+				if (!$foto['error']){
+					
+					 move_uploaded_file($foto['tmp_name'],$directory);
+
+					return $name_file;
+
+				} else {
+
+					return 0;
+
+				}
+	}
+
 	//Método para deletar os usuários
-	public function delete()
+	public function deletarUsuario()
 	{
 
 		$sql = new Sql();
@@ -243,6 +321,75 @@ class Usuario extends Model {
 
 	}
 
+	//Método estático para verificar o total de usuários registrados
+	public static function total()
+	{
+		
+		$sql = new Sql();
+		$total = $sql->select("SELECT SQL_CALC_FOUND_ROWS *
+			FROM tb_usuarios");
+		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+	  
+		return ['totalUsuarios'=>(int)$resultTotal[0]["nrtotal"]];
+	}
+	
+
+	//PAGINAÇÃO DA PÁGINA MEUS CHAMADOS
+	public  function getPage($page = 1, $itemsPerPage = 4)
+	{
+
+		$start = ($page - 1) * $itemsPerPage;
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+			SELECT SQL_CALC_FOUND_ROWS *
+			FROM  tb_chamados WHERE id_usuario = :id_usuario ORDER BY data_registro DESC
+			LIMIT $start, $itemsPerPage", [	 
+
+			':id_usuario'=>$this->getid_usuario()
+		]);
+
+		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+
+		return [
+			'data'=>$results,
+			'total'=>(int)$resultTotal[0]["nrtotal"],
+			'pages'=>ceil($resultTotal[0]["nrtotal"] / $itemsPerPage)
+		];
+
+	}
+
+
+	//BUSCA DA PÁGINA MEUS CHAMADOS
+
+	public static function getPageSearch($search, $page = 1, $itemsPerPage = 4)
+	{
+
+		$start = ($page - 1) * $itemsPerPage;
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+			SELECT SQL_CALC_FOUND_ROWS *
+			FROM tb_chamados 
+			WHERE problema LIKE :search  OR observacao LIKE :search OR id_chamado LIKE :search 
+			ORDER BY data_registro DESC
+			LIMIT $start, $itemsPerPage;
+		", [
+			':search'=>'%'.$search.'%'
+		]);
+
+		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+
+		return [
+			'data'=>$results,
+			'total'=>(int)$resultTotal[0]["nrtotal"],
+			'pages'=>ceil($resultTotal[0]["nrtotal"] / $itemsPerPage)
+		];
+
+	}
+	
 
 	//BUSCA DA PÁGINA USUÁRIOS
 
@@ -273,6 +420,7 @@ class Usuario extends Model {
 		];
 
 	}
+
 
 	
 

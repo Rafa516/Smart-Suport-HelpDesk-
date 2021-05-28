@@ -4,7 +4,17 @@
             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a style="background-color: #01A9DB;color: white" class="nav-link active" id="home-tab"
-                        data-toggle="tab" role="tab" aria-controls="home" aria-selected="false"><b>Usúários - 
+                        data-toggle="tab" role="tab" aria-controls="home" aria-selected="false"><b>Usúários -
+                         <?php if( totalUsuarios() == 0 ){ ?>
+
+                          Nenhum cadastrado
+                          <?php }elseif( totalUsuarios() == 1 ){ ?>
+
+                          <?php echo totalUsuarios(); ?> 1 cadastrado 
+                          <?php }else{ ?>
+
+                          <?php echo totalUsuarios(); ?> cadastrados 
+                          <?php } ?> 
                           </b></a>
                 </li>
             </ul>
@@ -73,15 +83,10 @@
                     <td><br>
                       <center>
                       
-                    
-                  <?php if( $value1["id_usuario"] == $usuario["id_usuario"] ){ ?>
-
-                    <button style="width: 80px;"   data-toggle="modal" onclick="alertAlterarDados()"  data-target="#dateModal"class="btn btn-primary btn-sm"></i> Editar</button>
-                      <?php }else{ ?>
-
-                    <a style="width: 80px;" href="/admin/usuario/delete/<?php echo $value1["id_usuario"]; ?>"  onclick="return confirm('Deseja realmente excluir o usuário <?php echo $value1["nome"]; ?>?')" class="btn btn-danger btn-sm"> Excluir</a>
-                      <?php } ?>
-
+                  <a style="width: 80px;" href="/admin/usuarios/editar/<?php echo $value1["id_usuario"]; ?>"  class="btn btn-success btn-sm"> Editar</a>
+                   
+                    <a style="width: 80px;" href="/admin/usuarios/delete/<?php echo $value1["id_usuario"]; ?>"  onclick="return confirm('Deseja realmente excluir o usuário <?php echo $value1["nome"]; ?>?')" class="btn btn-danger btn-sm"> Excluir</a>
+                     
 
                       
 

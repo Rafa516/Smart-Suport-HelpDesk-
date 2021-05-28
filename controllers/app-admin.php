@@ -2,6 +2,7 @@
 
 use \Projeto\PageAdmin;
 use \Projeto\Model\Usuario;
+use \Projeto\Model\Chamado;
 
 //------------------ROTA DA PÁGINA DE LOGIN--------------------------------//
 
@@ -28,7 +29,7 @@ $app->get("/admin/usuarios/delete/:id_usuario",function($id_usuario){
 
 	$usuario->get((int)$id_usuario);
 
-	$usuario->delete();
+	$usuario->deletarUsuario();
 
 	Usuario::setSuccess("Usuário removido com sucesso.");
 
@@ -131,7 +132,8 @@ $app->get('/admin/usuarios', function() {
 
 });
 
-//---------ROTA PARA O REGISTRO DOS USUÁRIOS ADMINISTRADORES----------------------//
+
+//---------ROTA PARA O REGISTRO DOS USUÁRIOS----------------------//
 
 $app->post("/admin/usuarios/registro", function(){
 
@@ -172,3 +174,147 @@ $app->post("/admin/usuarios/registro", function(){
 	exit;
 
 });
+
+
+$app->get('/admin/usuarios/editar/:id_usuario', function($id_usuario){
+ 
+   Usuario::verificaLoginAdmin();
+ 
+   $usuario = new Usuario();
+ 
+   $usuario->get((int)$id_usuario);
+ 
+   $page = new PageAdmin();
+ 
+   $page ->setTpl("admin-usuario-editar", array(
+        "usuario"=>$usuario->getValues(),
+        'profileMsg'=>Usuario::getSuccess(),
+        'errorRegister'=>Usuario::getErrorRegister()  
+    ));
+ 
+});
+
+
+$app->post("/admin/usuarios/editar/:id_usuario",function($id_usuario){
+
+	Usuario::verificaLoginAdmin();
+
+	$usuario = new Usuario();
+
+
+	$usuario->get((int)$id_usuario);
+ 
+  	$usuario->setData($_POST);
+
+  	$usuario->editarUsuario();
+
+  	Usuario::setSuccess("Dados alterados com Sucesso");
+
+  	header("Location: /admin/usuarios");
+  	exit;
+
+
+});
+
+//---------ROTA PARA A PÁGINA DE TODOS OS CHAMADOS ---------------------//
+
+$app->get('/admin/chamados', function() {  
+
+
+	Usuario::verificaLoginAdmin();
+
+	$chamado = new Chamado();
+
+	$search = (isset($_GET['search'])) ? $_GET['search'] : "";
+	$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+
+	if ($search != '') {
+
+		$pagination = $chamado::getPageSearchAll($search, $page);
+
+	} else {
+
+		$pagination = $chamado::getPageAll($page);
+
+	}
+
+	$pages = [];
+
+	for ($i=1; $i <= $pagination['pages']; $i++) { 
+		array_push($pages, [
+			'link'=>'/admin/chamados?page='.$i,
+			'page'=>$i,
+			'search'=>$search,
+		]);
+	}
+
+	$page = new PageAdmin();
+
+	$page->setTpl("admin-chamados",[
+	 "chamados"=>$pagination['data'],
+	 "search"=>$search,
+	 'profileMsg'=>Usuario::getSuccess(),
+	 "pages"=>$pages
+	]);
+
+});
+
+//---------ROTA PARA A PÁGINA DAS IMAGENS---------------------//
+
+$app->get('/admin/chamados/imagens/:id_chamado', function($id_chamado) {  
+
+
+	Usuario::verificaLoginAdmin();
+
+	$chamado = new Chamado();
+
+	$page = new PageAdmin();
+
+	$page->setTpl("admin-imagens-chamados",[
+		'imagens'=>$chamado->showFotos($id_chamado),
+		'chamado'=>$chamado->get($id_chamado)
+	]);
+
+});
+
+//---------ROTA PARA A PÁGINA DE SITUAÇÃO DOS CHAMADOS ---------------------//
+
+$app->get('/admin/chamado-situacao/:id_chamado', function($id_chamado) {  
+
+
+	Usuario::verificaLoginAdmin();
+
+	$chamado = new Chamado();
+
+	$page = new PageAdmin();
+
+	$page->setTpl("admin-situacao-chamado",[
+		"id_chamado"=>$chamado->get((int)$id_chamado),
+		"chamadoSituacao"=>$chamado->valueSituacao((int)$id_chamado),
+
+	]);
+
+});
+
+
+//---------ROTA PARA A ALTERAÇÃO DOS CHAMADOS ---------------------//
+
+$app->post("/admin/chamado/atualizar-situacao/:id_chamado",function($id_chamado){
+
+	$chamado = new Chamado();
+
+	$chamado->get((int)$id_chamado);
+
+	$chamado->setData($_POST);
+
+	$chamado->editarSituacao();
+
+	Usuario::setSuccess("Situação alterada com Sucesso");
+
+	header("Location: /admin/chamados");
+ 	exit;
+});
+
+?>
+
+

@@ -38,13 +38,27 @@
             </div></a>
             <!--Widget End-->
             <!--Widget Start-->
-            <a href=""> <div class="card-body color" style="background-color:#0431B4">
+            <a href="admin/usuarios"> <div class="card-body color" style="background-color:#0431B4">
                 <div class="float-left">
                     <h3>
                         <h3><b>
                             <center><span class="count">Usuários Cadastrados</span></center>
                         </h3>
                         <br><center> <i class="fas fa-users" aria-hidden="true"></i></center>
+                        <?php if( totalUsuarios() == 0 ){ ?>
+
+                         <center><p style="font-size: 20px;">Nenhum usuário</p></center>
+                        
+                        <?php }elseif( totalUsuarios() == 1 ){ ?>
+
+                         <center><p style="font-size: 20px;"><?php echo totalUsuarios(); ?> Usuário</p></center>
+                        
+                        <?php }else{ ?>
+
+                         <center><p style="font-size: 20px;"><?php echo totalUsuarios(); ?> Usuários</p></center></b>
+                        
+                        <?php } ?>
+
                        
                 </div>
 

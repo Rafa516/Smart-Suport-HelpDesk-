@@ -50,7 +50,7 @@
     <div class="mobile_nav_items">
        <a href="/admin"><i class="fas fa-desktop"></i><span>Painel de Controle</span></a>
        <a href="/admin/usuarios"><i class="fas fa-users"></i><span>Usuários</span></a>
-      <a href=""><i class="fa fa-table"></i><span>Todos Chamados</span></a>
+      <a href="/admin/chamados"><i class="fa fa-table"></i><span>Todos Chamados</span></a>
       <a href=""><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
     </div>
   </div>
@@ -66,7 +66,7 @@
     </div>
    <a href="/admin"><i class="fas fa-desktop"></i><span>Painel de Controle</span></a>
     <a href="/admin/usuarios"><i class="fas fa-users"></i><span>Usuários</span></a>
-      <a href=""><i class="fa fa-table"></i><span>Todos Chamados</span></a>
+      <a href="/admin/chamados"><i class="fa fa-table"></i><span>Todos Chamados</span></a>
       <a href=""><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
   </div>
   <!--sidebar end-->
