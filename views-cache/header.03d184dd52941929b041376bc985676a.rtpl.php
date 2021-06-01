@@ -45,8 +45,14 @@
   <!--mobile navigation bar start-->
   <div class="mobile_nav">
     <div class="nav_bar">
-    
+    <?php if( $usuario["foto"] == 0 ){ ?>
+
       <img src="/res/ft_perfil/ft_male.png" class="mobile_profile_image" alt="">
+      <?php }else{ ?>
+
+       <img src="/res/ft_perfil/<?php echo $usuario["foto"]; ?>" class="mobile_profile_image" alt="">
+      <?php } ?>
+
       <b style="font-size: 17px;color: white;"><?php echo getUsuarioNome(); ?></b>
 
       <i class="fa fa-bars nav_btn"></i>
@@ -55,7 +61,7 @@
       <a href="/usuario"><i class="fas fa-home"></i><span>Home</span></a>
       <a href="/usuario/abertura-chamado"><i class="fa fa-plus-circle"></i><span>Registrar Chamado</span></a>
       <a href="/usuario/meus-chamados"><i class="fa fa-table"></i><span>Meus Chamados</span></a>
-      <a href=""><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
+      <a href="/usuario/perfil"><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
     </div>
   </div>
   <!--mobile navigation bar end-->
@@ -64,7 +70,14 @@
   <div class="sidebar">
     <div class="profile_info">
      
+      <?php if( $usuario["foto"] == 0 ){ ?>
+
       <img src="/res/ft_perfil/ft_male.png" class="profile_image" alt="">
+      <?php }else{ ?>
+
+      <img src="/res/ft_perfil/<?php echo $usuario["foto"]; ?>" class="profile_image" alt="">
+      <?php } ?>
+
       <b style="font-size: 17px;color: white;"><?php echo getUsuarioNome(); ?></b>
      
   
@@ -72,7 +85,7 @@
     <a href="/usuario"><i class="fas fa-home"></i><span>Home</span></a>
       <a href="/usuario/abertura-chamado"><i class="fa fa-plus-circle"></i><span>Registrar Chamado</span></a>
        <a href="/usuario/meus-chamados"><i class="fa fa-table"></i><span>Meus Chamados</span></a>
-      <a href=""><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
+      <a href="/usuario/perfil"><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
   </div>
   <!--sidebar end-->
 

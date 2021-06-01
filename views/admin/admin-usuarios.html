@@ -109,50 +109,6 @@
     </div>
 </div>
 
-<!-- Modal dados -->
-<div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="dateModal" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="dateModal">Alterar meus Dados</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="form-group" action="/admin/profile/update/{$usuario.id_usuario}" method="post"><br>
-
-
-          <div class="form-group"><label class="small mb-1"><b>Nome</b></label>
-            <input class="form-control py-1" value='{function="getUsuarioNome()"}' type="text" name="nome" required />
-          </div>
-
-           <div class="form-group"><label class="small mb-1"><b>Administrador</b></label>
-            <select class="form-control py-1" name="inadmin" id="inadmin">
-               <option value="1">Sim</option>
-                <option value="0">Não</option>
-
-            </select>
-          </div>   
-
-             <div class="form-group"><label class="small mb-1"><b>Loja</b></label>
-            <select class="form-control py-1" name="store" id="store">
-           <option value="Loja/Empresa 1">Loja/Empresa 1</option>
-            <option value="Loja/Empresa 2">Loja/Empresa 2</option>
-            <option value="Loja/Empresa 3">Loja/Empresa 3</option>
-           
-            </select>
-          </div>
-
-
-          <input class="btn btn-success btn btn-block" type="submit" value="Alterar">
-
-
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Modal cadastro -->
 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">

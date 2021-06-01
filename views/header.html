@@ -45,8 +45,11 @@
   <!--mobile navigation bar start-->
   <div class="mobile_nav">
     <div class="nav_bar">
-    
+    {if="$usuario.foto == 0"}
       <img src="/res/ft_perfil/ft_male.png" class="mobile_profile_image" alt="">
+      {else}
+       <img src="/res/ft_perfil/{$usuario.foto}" class="mobile_profile_image" alt="">
+      {/if}
       <b style="font-size: 17px;color: white;">{function="getUsuarioNome()"}</b>
 
       <i class="fa fa-bars nav_btn"></i>
@@ -55,7 +58,7 @@
       <a href="/usuario"><i class="fas fa-home"></i><span>Home</span></a>
       <a href="/usuario/abertura-chamado"><i class="fa fa-plus-circle"></i><span>Registrar Chamado</span></a>
       <a href="/usuario/meus-chamados"><i class="fa fa-table"></i><span>Meus Chamados</span></a>
-      <a href=""><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
+      <a href="/usuario/perfil"><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
     </div>
   </div>
   <!--mobile navigation bar end-->
@@ -64,7 +67,11 @@
   <div class="sidebar">
     <div class="profile_info">
      
+      {if="$usuario.foto == 0"}
       <img src="/res/ft_perfil/ft_male.png" class="profile_image" alt="">
+      {else}
+      <img src="/res/ft_perfil/{$usuario.foto}" class="profile_image" alt="">
+      {/if}
       <b style="font-size: 17px;color: white;">{function="getUsuarioNome()"}</b>
      
   
@@ -72,7 +79,7 @@
     <a href="/usuario"><i class="fas fa-home"></i><span>Home</span></a>
       <a href="/usuario/abertura-chamado"><i class="fa fa-plus-circle"></i><span>Registrar Chamado</span></a>
        <a href="/usuario/meus-chamados"><i class="fa fa-table"></i><span>Meus Chamados</span></a>
-      <a href=""><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
+      <a href="/usuario/perfil"><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
   </div>
   <!--sidebar end-->
 

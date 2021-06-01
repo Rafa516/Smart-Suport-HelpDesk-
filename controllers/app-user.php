@@ -191,6 +191,55 @@ $app->get('/usuario/meus-chamados/imagens/:id_chamado', function($id_chamado) {
 
 });
 
+//---------ROTA PARA  A PÁGINA DO PERFIL DO USUÁRIO----------------------//
+
+$app->get('/usuario/perfil', function() {  
+
+
+	Usuario::verificaLogin();
+
+	$page = new Page();
+
+	$page->setTpl("usuario-perfil");
+
+});
+
+
+
+//---------ROTA PARA ALTERAR OS DADOS DO USUÁRIO - POST----------------------//
+
+$app->post("/usuario/perfil/editar/:id_usuario", function ($id_usuario) {
+
+	$usuario = new Usuario();
+
+	$usuario->get((int)$id_usuario);
+
+	$usuario->setData($_POST);
+
+	$usuario-> editarUsuario();
+
+	header('Location: /');
+	exit;
+
+});
+
+//---------ROTA PARA ALTERAR A FOTO DO PERFIL DO USUÁRIO - POST---------------------//
+
+$app->post("/usuario/perfil/editar-imagem/:id_usuario", function ($id_usuario) {
+
+	$usuario = new Usuario();
+
+	$usuario->get((int)$id_usuario);
+
+	$usuario->setData($_POST);
+
+	$usuario->alterarImagemPerfil();
+
+	header('Location: /');
+	exit;
+
+});
+
 
 
 

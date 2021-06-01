@@ -197,11 +197,10 @@ class Usuario extends Model {
 
 		$sql  = new Sql();
 
-		$results = $sql->select("CALL sp_editar_usuario(:id_usuario,:nome,:loja,:email,:inadmin,:cargo)",array(
+		$results = $sql->select("CALL sp_editar_usuario(:id_usuario,:nome,:loja,:inadmin,:cargo)",array(
 			":id_usuario"=>$this->getid_usuario(),
 			":nome"=>$this->getnome(),
 			":loja"=>$this->getloja(),
-			":email"=>$this->getemail(),
 			":inadmin"=>$this->getinadmin(),
 			":cargo"=>$this->getcargo(),
 		));
@@ -215,9 +214,9 @@ class Usuario extends Model {
     {
         $sql = new Sql();
  
-        $results = $sql->select('CALL sp_alterar_image_perfil(:id_usuario,:foto)', [
+        $results = $sql->select('CALL sp_alterar_imagem_perfil(:id_usuario,:foto)', [
             ":id_usuario" => $this->getid_usuario(),
-            ":foto"=>User::getImage($this->getfoto())
+            ":foto"=>Usuario::getImage($this->getfoto())
            ,
         ]);
 

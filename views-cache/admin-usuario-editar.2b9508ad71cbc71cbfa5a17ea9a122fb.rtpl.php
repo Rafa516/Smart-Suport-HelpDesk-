@@ -53,9 +53,7 @@
           <?php } ?>
 
 
-           <div class="form-group"><label class="small mb-1"><b>E-mail</b></label>
-            <input class="form-control py-1" value='<?php echo $usuario["email"]; ?>' type="text" name="email"  />
-          </div>
+           
 
            <div class="form-group"><label class="small mb-1"><b>Cargo</b></label>
           <select class="form-control py-1" name="cargo" id="cargo">
