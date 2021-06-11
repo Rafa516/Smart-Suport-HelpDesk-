@@ -11,13 +11,27 @@
 
           <center>
             <!--Widget Start-->
-             <a href=""><div class="card-body color" style="background-color:#FF4000">
+             <a href="/admin/chamados-pendentes"><div class="card-body color" style="background-color:#FF4000">
                 <div class="float-left">
                     <h3>
                         <h3>
                             <center><span class="count">Chamados Pendentes</span></center>
                         </h3><b>
                         <br><center> <i class="fas fa-exclamation-triangle" aria-hidden="true"></i></center>
+                        <?php if( totalChamadosPendentes() == 0 ){ ?>
+
+                         <center><p style="font-size: 20px;">Nenhum Chamado</p></center>
+                        
+                        <?php }elseif( totalChamadosPendentes() == 1 ){ ?>
+
+                         <center><p style="font-size: 20px;"><?php echo totalChamadosPendentes(); ?> Chamado</p></center>
+                        
+                        <?php }else{ ?>
+
+                         <center><p style="font-size: 20px;"><?php echo totalChamadosPendentes(); ?> Chamados</p></center></b>
+                        
+                        <?php } ?>
+
                        
                 </div>
 
@@ -45,17 +59,17 @@
                             <center><span class="count">Usuários Cadastrados</span></center>
                         </h3>
                         <br><center> <i class="fas fa-users" aria-hidden="true"></i></center>
-                        <?php if( totalUsuarios() == 0 ){ ?>
+                        <?php if( totalChamadosPendentes() == 0 ){ ?>
 
                          <center><p style="font-size: 20px;">Nenhum usuário</p></center>
                         
-                        <?php }elseif( totalUsuarios() == 1 ){ ?>
+                        <?php }elseif( totalChamadosPendentes() == 1 ){ ?>
 
-                         <center><p style="font-size: 20px;"><?php echo totalUsuarios(); ?> Usuário</p></center>
+                         <center><p style="font-size: 20px;"><?php echo totalChamadosPendentes(); ?> Usuário</p></center>
                         
                         <?php }else{ ?>
 
-                         <center><p style="font-size: 20px;"><?php echo totalUsuarios(); ?> Usuários</p></center></b>
+                         <center><p style="font-size: 20px;"><?php echo totalChamadosPendentes(); ?> Usuários</p></center></b>
                         
                         <?php } ?>
 

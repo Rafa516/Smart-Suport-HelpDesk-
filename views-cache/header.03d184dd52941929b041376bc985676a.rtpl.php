@@ -58,8 +58,8 @@
       <i class="fa fa-bars nav_btn"></i>
     </div>
     <div class="mobile_nav_items">
-      <a href="/usuario"><i class="fas fa-home"></i><span>Home</span></a>
-      <a href="/usuario/abertura-chamado"><i class="fa fa-plus-circle"></i><span>Registrar Chamado</span></a>
+      <a href="/usuario/home"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="/usuario/registrar-chamado"><i class="fa fa-plus-circle"></i><span>Registrar Chamado</span></a>
       <a href="/usuario/meus-chamados"><i class="fa fa-table"></i><span>Meus Chamados</span></a>
       <a href="/usuario/perfil"><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
     </div>
@@ -82,8 +82,8 @@
      
   
     </div>
-    <a href="/usuario"><i class="fas fa-home"></i><span>Home</span></a>
-      <a href="/usuario/abertura-chamado"><i class="fa fa-plus-circle"></i><span>Registrar Chamado</span></a>
+    <a href="/usuario/home"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="/usuario/registrar-chamado"><i class="fa fa-plus-circle"></i><span>Registrar Chamado</span></a>
        <a href="/usuario/meus-chamados"><i class="fa fa-table"></i><span>Meus Chamados</span></a>
       <a href="/usuario/perfil"><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
   </div>

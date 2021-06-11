@@ -88,6 +88,7 @@ class Chamado extends Model {
 	}
 
 	//Método estático que verifica o total de chamados pedentes registrados	
+	
 	public static function totalChamadosPendentes()	
 	{	
 
@@ -96,7 +97,7 @@ class Chamado extends Model {
 			FROM tb_chamados WHERE situacao = 'Pendente'");	
 		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");	
 
-		return ['ChamadosPendings'=>(int)$resultTotal[0]["nrtotal"]];	
+		return ['chamadosPendentes'=>(int)$resultTotal[0]["nrtotal"]];	
 	}	
 
 
@@ -109,7 +110,7 @@ class Chamado extends Model {
 			FROM tb_chamados WHERE situacao = 'Finalizado'");	
 		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");	
 
-		return ['ChamadosFinished'=>(int)$resultTotal[0]["nrtotal"]];	
+		return ['chamadosFinalizados'=>(int)$resultTotal[0]["nrtotal"]];	
 	}
 
 	public static function totalChamadosID($id_usuario)
@@ -466,7 +467,7 @@ class Chamado extends Model {
 	}
 
 	//PAGINAÇÃO DA PÁGINA TODOS CHAMADOS PENDENTES
-	public static function getPageChamadosPendings($page = 1, $itemsPerPage = 4)
+	public static function getPageChamadosPendentes($page = 1, $itemsPerPage = 4)
 	{
 
 		$start = ($page - 1) * $itemsPerPage;
@@ -492,7 +493,7 @@ class Chamado extends Model {
 
 	//BUSCA DA PÁGINA MEUS TODOS PENDENTES
 
-	public static function getPageSearchChamadosPendings($search, $page = 1, $itemsPerPage = 4)
+	public static function getPageSearchChamadosPendentes($search, $page = 1, $itemsPerPage = 4)
 	{
 
 		$start = ($page - 1) * $itemsPerPage;

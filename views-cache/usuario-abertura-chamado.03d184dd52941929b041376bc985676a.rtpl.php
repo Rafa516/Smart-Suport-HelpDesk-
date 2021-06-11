@@ -35,7 +35,7 @@
             <div class="col-md-12">
               <p class="text-muted">
 
-              <form class="form-group" action="/usuario/abertura-chamado/enviar" method="post" enctype="multipart/form-data"><br>
+              <form class="form-group" action="/usuario/registrar-chamado/enviar" method="post" enctype="multipart/form-data"><br>
 
 
            <div class="form-group"><label class="small mb-1"><b

@@ -5,13 +5,13 @@
             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a style="background-color: #01A9DB;color: white" class="nav-link active" id="home-tab"
-                        data-toggle="tab" role="tab" aria-controls="home" aria-selected="false"><b>Todos Chamados -   
-                          {if="totalChamados() == 0"}
+                        data-toggle="tab" role="tab" aria-controls="home" aria-selected="false"><b>Chamados Pendentes -   
+                          {if="totalChamadosPendentes() == 0"}
                           Nenhum Registrado
-                          {elseif="totalChamados() == 1"}
-                          {function="totalChamados()"} Registrado
+                          {elseif="totalChamadosPendentes() == 1"}
+                          {function="totalChamadosPendentes()"} Registrado
                           {else}
-                          {function="totalChamados()"} Registrados
+                          {function="totalChamadosPendentes()"} Registrados
                           {/if}  </b></a>
 
                 </li>
@@ -24,14 +24,14 @@
             </div>
             {/if}
 
-             {if="totalChamados() != 0"}
+             {if="totalChamadosPendentes() != 0"}
              <div class="table-responsive">
                 <div style="float: right">
-                  <form  action="/admin/chamados" method="get" >
+                  <form  action="/admin/calls-pendings" method="get" >
                         <div class="input-group">
                           <input   type="text" name="search"  class="form-control" placeholder="Digite sua pesquisa...">
                               <span  class="input-group-btn">
-                                <button  class="btn btn" style="background-color: #01A9DB;color: white" type="submit"  id="search-btn"  ><i class="fa fa-search"style="font-size:13px;" > PESQUISAR</i>
+                                <button  class="btn btn" style="background-color: #688A08;color: white" type="submit"  id="search-btn"  ><i class="fa fa-search"style="font-size:13px;" > PESQUISAR</i>
                                 </button>
                               </span>
                         </div>
@@ -55,7 +55,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {loop="$chamados"}
+                  {loop="$chamadosPendentes"}
                   <tr style="font-size: 15px;font-weight: normal;">
                      <td><br><center>{$value.id_chamado}</td>
                     <td><br><center>{$value.nome}</td>
@@ -65,10 +65,10 @@
 
                     <td><br><center>{$value.observacao}</td>
                    
-                    {if="nomeFotos($value.id_chamado) == ''"}
+                   {if="nomeFotos($value.id_chamado) == ''"}
                        <td><br><center><b>Sem Fotos</b></td>
                         {else}
-                    <td><br><center>   <a href="/admin/chamados/imagens/{$value.id_chamado}" style="width: 100px;" class="btn btn-info btn-sm" >
+                    <td><br><center>   <a href="/admin/calls/images/{$value.id_chamado}" style="width: 100px;" class="btn btn-info btn-sm" >
                       {if="numFotos($value.id_chamado) == 1"}
                       <b>{function="numFotos($value.id_chamado)"} Foto</b></a>
                       {else}
@@ -76,19 +76,17 @@
                       {/if}
                    </td/>
                       {/if}
+                   </td/>
                      <td><br><center>
-                      {if="$value.situacao == 'Pendente'"}
+                     
 
-
-                          <a style="width: 80px;" href="/admin/chamado-situacao/{$value.id_chamado}" onclick="return confirm('Deseja alterar a situação do chamado nº {$value.id_chamado}?')" type="button" class="btn btn-outline-danger btn-sm ">Pendente</a></td>
-                      {else}
-                        <a style="width: 80px;color: white;" type="button" class="btn btn-success btn-sm "><b>Finalizado</b></a></td>
-                      {/if}
+                          <a style="width: 80px;" href="/admin/chamado-situacao/{$value1.id_chamado}" onclick="return confirm('Deseja alterar a situação do chamado nº {$value1.id_chamado}?')" type="button" class="btn btn-outline-danger btn-sm ">Pendente</a></td>
+                     
                       </td>
                  
 
                     <td><br><center>{function="formatDate($value.data_registro)"}</td>
-                    <td><br><center> <a style="width: 80px;" href="/admin/chamado/delete/{$value.id_chamado}"  onclick="return confirm('Deseja realmente excluir o chamado nº {$value.id_chamado}?')" class="btn btn-danger btn-sm"> Excluir</a></td>
+                    <td><br><center> <a style="width: 80px;" href="/admin/chamado/delete/{$value.id_chamado}"  onclick="return confirm('Deseja realmente excluir o chamado nº {$value1.id_chamado}?')" class="btn btn-danger btn-sm"> Excluir</a></td>
                    
                    
                   </tr>
@@ -107,6 +105,7 @@
                         <li><a href="{$value.link}">{$value.page}</a></li>
                           {/if}
                         {/loop}
+              </ul>
             </div>
           </center>
 

@@ -41,7 +41,7 @@ $app->post('/login', function() {
 
 	}
 
-	header("Location: /usuario");
+	header("Location: /usuario/home");
 	exit;
 
 });
@@ -60,7 +60,7 @@ $app->get('/usuario/logout', function() {
 
 //---------ROTA PARA A PÁGINA INICIAL----------------------//
 
-$app->get('/usuario', function() {  
+$app->get('/usuario/home', function() {  
 
 
 	Usuario::verificaLogin();
@@ -74,7 +74,7 @@ $app->get('/usuario', function() {
 //---------ROTA PARA A ABERTURA DE CHAMADOS----------------------//
 
 
-$app->get('/usuario/abertura-chamado', function() {  
+$app->get('/usuario/registrar-chamado', function() {  
 
 
 	usuario::verificaLogin();
@@ -91,7 +91,7 @@ $app->get('/usuario/abertura-chamado', function() {
 //---------ROTA PARA O FORMULÁRIO DO CHAMADO----------------------//
 
 
-$app->post("/usuario/abertura-chamado/enviar", function(){
+$app->post("/usuario/registrar-chamado/enviar", function(){
 
 	usuario::verificaLogin();
 
@@ -104,7 +104,7 @@ $app->post("/usuario/abertura-chamado/enviar", function(){
 
 	usuario::setSuccess("Chamado registrado com sucesso!!");
 
-	header("Location: /usuario/abertura-chamado");
+	header("Location: /usuario/meus-chamados");
 	exit;
 
 

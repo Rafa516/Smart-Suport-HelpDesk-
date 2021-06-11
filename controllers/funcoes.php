@@ -41,15 +41,30 @@ use \Projeto\Model\Chamado;
 
 	}
 
-	function totalChamadosID($iduser){
+	function totalChamadosID($id_usuario){
 
-		$total = Chamado::totalChamadosID($iduser);
+		$total = Chamado::totalChamadosID($id_usuario);
 	
 
 	   return  $total['chamadosTotalID'];
 
 	}
 	
+	function totalChamadosPendentes(){
+
+		$total = Chamado::totalChamadosPendentes();
+
+	   return  $total['chamadosPendentes'];
+
+	}
+
+
+	function totalChamadosFinalizados(){
+
+		$total = Call::totalChamadosFinalizados();
+
+	   return  $total['chamadosFinalizados'];
+	}
 
 	function numFotos($id_chamado){
 

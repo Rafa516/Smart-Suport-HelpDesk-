@@ -6,16 +6,16 @@
             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a style="background-color: #01A9DB;color: white" class="nav-link active" id="home-tab"
-                        data-toggle="tab" role="tab" aria-controls="home" aria-selected="false"><b>Todos Chamados -   
-                          <?php if( totalChamados() == 0 ){ ?>
+                        data-toggle="tab" role="tab" aria-controls="home" aria-selected="false"><b>Chamados Pendentes -   
+                          <?php if( totalChamadosPendentes() == 0 ){ ?>
 
                           Nenhum Registrado
-                          <?php }elseif( totalChamados() == 1 ){ ?>
+                          <?php }elseif( totalChamadosPendentes() == 1 ){ ?>
 
-                          <?php echo totalChamados(); ?> Registrado
+                          <?php echo totalChamadosPendentes(); ?> Registrado
                           <?php }else{ ?>
 
-                          <?php echo totalChamados(); ?> Registrados
+                          <?php echo totalChamadosPendentes(); ?> Registrados
                           <?php } ?>  </b></a>
 
                 </li>
@@ -30,15 +30,15 @@
             <?php } ?>
 
 
-             <?php if( totalChamados() != 0 ){ ?>
+             <?php if( totalChamadosPendentes() != 0 ){ ?>
 
              <div class="table-responsive">
                 <div style="float: right">
-                  <form  action="/admin/chamados" method="get" >
+                  <form  action="/admin/calls-pendings" method="get" >
                         <div class="input-group">
                           <input   type="text" name="search"  class="form-control" placeholder="Digite sua pesquisa...">
                               <span  class="input-group-btn">
-                                <button  class="btn btn" style="background-color: #01A9DB;color: white" type="submit"  id="search-btn"  ><i class="fa fa-search"style="font-size:13px;" > PESQUISAR</i>
+                                <button  class="btn btn" style="background-color: #688A08;color: white" type="submit"  id="search-btn"  ><i class="fa fa-search"style="font-size:13px;" > PESQUISAR</i>
                                 </button>
                               </span>
                         </div>
@@ -62,7 +62,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php $counter1=-1;  if( isset($chamados) && ( is_array($chamados) || $chamados instanceof Traversable ) && sizeof($chamados) ) foreach( $chamados as $key1 => $value1 ){ $counter1++; ?>
+                  <?php $counter1=-1;  if( isset($chamadosPendentes) && ( is_array($chamadosPendentes) || $chamadosPendentes instanceof Traversable ) && sizeof($chamadosPendentes) ) foreach( $chamadosPendentes as $key1 => $value1 ){ $counter1++; ?>
 
                   <tr style="font-size: 15px;font-weight: normal;">
                      <td><br><center><?php echo $value1["id_chamado"]; ?></td>
@@ -73,12 +73,12 @@
 
                     <td><br><center><?php echo $value1["observacao"]; ?></td>
                    
-                    <?php if( nomeFotos($value1["id_chamado"]) == '' ){ ?>
+                   <?php if( nomeFotos($value1["id_chamado"]) == '' ){ ?>
 
                        <td><br><center><b>Sem Fotos</b></td>
                         <?php }else{ ?>
 
-                    <td><br><center>   <a href="/admin/chamados/imagens/<?php echo $value1["id_chamado"]; ?>" style="width: 100px;" class="btn btn-info btn-sm" >
+                    <td><br><center>   <a href="/admin/calls/images/<?php echo $value1["id_chamado"]; ?>" style="width: 100px;" class="btn btn-info btn-sm" >
                       <?php if( numFotos($value1["id_chamado"]) == 1 ){ ?>
 
                       <b><?php echo numFotos($value1["id_chamado"]); ?> Foto</b></a>
@@ -90,17 +90,12 @@
                    </td/>
                       <?php } ?>
 
+                   </td/>
                      <td><br><center>
-                      <?php if( $value1["situacao"] == 'Pendente' ){ ?>
-
-
+                     
 
                           <a style="width: 80px;" href="/admin/chamado-situacao/<?php echo $value1["id_chamado"]; ?>" onclick="return confirm('Deseja alterar a situação do chamado nº <?php echo $value1["id_chamado"]; ?>?')" type="button" class="btn btn-outline-danger btn-sm ">Pendente</a></td>
-                      <?php }else{ ?>
-
-                        <a style="width: 80px;color: white;" type="button" class="btn btn-success btn-sm "><b>Finalizado</b></a></td>
-                      <?php } ?>
-
+                     
                       </td>
                  
 
@@ -129,6 +124,7 @@
 
                         <?php } ?>
 
+              </ul>
             </div>
           </center>
 

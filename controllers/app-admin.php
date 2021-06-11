@@ -259,6 +259,50 @@ $app->get('/admin/chamados', function() {
 
 });
 
+//---------ROTA PARA A PÁGINA DE TODOS CHAMADOS PENDENTES----------------------//
+
+$app->get('/admin/chamados-pendentes', function() {  
+
+
+	Usuario::verificaLoginAdmin();
+
+	$chamado = new Chamado();
+
+	$search = (isset($_GET['search'])) ? $_GET['search'] : "";
+	$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+
+	if ($search != '') {
+
+		$pagination = $chamado::getPageSearchChamadosPendentes($search, $page);
+
+	} else {
+
+		$pagination = $chamado::getPageChamadosPendentes($page);
+
+	}
+
+	$pages = [];
+
+	for ($i=1; $i <= $pagination['pages']; $i++) { 
+		array_push($pages, [
+			'link'=>'/admin/chamadosPendentes?page='.$i,
+			'page'=>$i,
+			'search'=>$search,
+		]);
+	}
+
+	$page = new PageAdmin();
+
+	$page->setTpl("admin-chamados-pendentes",[
+	 "chamadosPendentes"=>$pagination['data'],
+	 "search"=>$search,
+	 'profileMsg'=>Usuario::getSuccess(),
+	 "pages"=>$pages
+
+	]);
+
+});
+
 //---------ROTA PARA A PÁGINA DAS IMAGENS---------------------//
 
 $app->get('/admin/chamados/imagens/:id_chamado', function($id_chamado) {  
@@ -313,6 +357,57 @@ $app->post("/admin/chamado/atualizar-situacao/:id_chamado",function($id_chamado)
 
 	header("Location: /admin/chamados");
  	exit;
+});
+
+
+
+//---------ROTA PARA  A PÁGINA DO PERFIL DO USUÁRIO----------------------//
+
+$app->get('/admin/perfil', function() {  
+
+
+	Usuario::verificaLoginAdmin();
+
+	$page = new PageAdmin();
+
+	$page->setTpl("admin-perfil");
+
+});
+
+
+
+//---------ROTA PARA ALTERAR OS DADOS DO USUÁRIO - POST----------------------//
+
+$app->post("/admin/perfil/editar/:id_usuario", function ($id_usuario) {
+
+	$usuario = new Usuario();
+
+	$usuario->get((int)$id_usuario);
+
+	$usuario->setData($_POST);
+
+	$usuario-> editarUsuario();
+
+	header('Location: /admin/login');
+	exit;
+
+});
+
+//---------ROTA PARA ALTERAR A FOTO DO PERFIL DO USUÁRIO - POST---------------------//
+
+$app->post("/admin/perfil/editar-imagem/:id_usuario", function ($id_usuario) {
+
+	$usuario = new Usuario();
+
+	$usuario->get((int)$id_usuario);
+
+	$usuario->setData($_POST);
+
+	$usuario->alterarImagemPerfil();
+
+	header('Location: /admin/login');
+	exit;
+
 });
 
 ?>

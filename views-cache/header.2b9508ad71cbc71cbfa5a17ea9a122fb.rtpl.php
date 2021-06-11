@@ -42,7 +42,14 @@
   <div class="mobile_nav">
     <div class="nav_bar">
    
-      <img src="/../res/ft_perfil/ft_male.png" class="mobile_profile_image" alt="">
+     <?php if( $usuario["foto"] == 0 ){ ?>
+
+      <img src="/res/ft_perfil/ft_male.png" class="mobile_profile_image" alt="">
+      <?php }else{ ?>
+
+       <img src="/res/ft_perfil/<?php echo $usuario["foto"]; ?>" class="mobile_profile_image" alt="">
+      <?php } ?>
+
 
       <b style="font-size: 17px;color: white;"><?php echo getUsuarioNome(); ?></b>
       <i class="fa fa-bars nav_btn"></i>
@@ -51,7 +58,7 @@
        <a href="/admin"><i class="fas fa-desktop"></i><span>Painel de Controle</span></a>
        <a href="/admin/usuarios"><i class="fas fa-users"></i><span>Usuários</span></a>
       <a href="/admin/chamados"><i class="fa fa-table"></i><span>Todos Chamados</span></a>
-      <a href=""><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
+      <a href="/admin/perfil"><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
     </div>
   </div>
   <!--mobile navigation bar end-->
@@ -60,14 +67,20 @@
   <div class="sidebar">
     <div class="profile_info">
     
-      <img src="/../res/ft_perfil/ft_male.png" class="profile_image" alt="">
-    
+      <?php if( $usuario["foto"] == 0 ){ ?>
+
+      <img src="/res/ft_perfil/ft_male.png" class="profile_image" alt="">
+      <?php }else{ ?>
+
+      <img src="/res/ft_perfil/<?php echo $usuario["foto"]; ?>" class="profile_image" alt="">
+      <?php } ?>
+
       <h5 style="font-size: 18px;color: white;"><?php echo getUsuarioNome(); ?></h5>
     </div>
    <a href="/admin"><i class="fas fa-desktop"></i><span>Painel de Controle</span></a>
     <a href="/admin/usuarios"><i class="fas fa-users"></i><span>Usuários</span></a>
       <a href="/admin/chamados"><i class="fa fa-table"></i><span>Todos Chamados</span></a>
-      <a href=""><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
+      <a href="/admin/perfil"><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
   </div>
   <!--sidebar end-->
 
