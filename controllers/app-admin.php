@@ -285,7 +285,7 @@ $app->get('/admin/chamados-pendentes', function() {
 
 	for ($i=1; $i <= $pagination['pages']; $i++) { 
 		array_push($pages, [
-			'link'=>'/admin/chamadosPendentes?page='.$i,
+			'link'=>'/admin/chamados-pendentes?page='.$i,
 			'page'=>$i,
 			'search'=>$search,
 		]);
@@ -295,6 +295,50 @@ $app->get('/admin/chamados-pendentes', function() {
 
 	$page->setTpl("admin-chamados-pendentes",[
 	 "chamadosPendentes"=>$pagination['data'],
+	 "search"=>$search,
+	 'profileMsg'=>Usuario::getSuccess(),
+	 "pages"=>$pages
+
+	]);
+
+});
+
+//---------ROTA PARA A PÁGINA DE TODOS CHAMADOS FINALIZADOS----------------------//
+
+$app->get('/admin/chamados-finalizados', function() {  
+
+
+	Usuario::verificaLoginAdmin();
+
+	$chamado = new Chamado();
+
+	$search = (isset($_GET['search'])) ? $_GET['search'] : "";
+	$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+
+	if ($search != '') {
+
+		$pagination = $chamado::getPageSearchChamadosFinalizados($search, $page);
+
+	} else {
+
+		$pagination = $chamado::getPageChamadosFinalizados($page);
+
+	}
+
+	$pages = [];
+
+	for ($i=1; $i <= $pagination['pages']; $i++) { 
+		array_push($pages, [
+			'link'=>'/admin/chamados-finalizados?page='.$i,
+			'page'=>$i,
+			'search'=>$search,
+		]);
+	}
+
+	$page = new PageAdmin();
+
+	$page->setTpl("admin-chamados-finalizados",[
+	 "chamadosFinalizados"=>$pagination['data'],
 	 "search"=>$search,
 	 'profileMsg'=>Usuario::getSuccess(),
 	 "pages"=>$pages

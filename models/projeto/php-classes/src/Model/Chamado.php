@@ -411,7 +411,7 @@ class Chamado extends Model {
 
 
 //PAGINAÇÃO DA PÁGINA TODOS CHAMADOS FINALIZADOS
-	public static function getPageChamadosFinished($page = 1, $itemsPerPage = 4)
+	public static function getPageChamadosFinalizados($page = 1, $itemsPerPage = 4)
 	{
 
 		$start = ($page - 1) * $itemsPerPage;
@@ -437,7 +437,7 @@ class Chamado extends Model {
 
 	//BUSCA DA PÁGINA MEUS TODOS FINALIZADOS
 
-	public static function getPageSearchChamadosFinished($search, $page = 1, $itemsPerPage = 4)
+	public static function getPageSearchChamadosFinalizados($search, $page = 1, $itemsPerPage = 4)
 	{
 
 		$start = ($page - 1) * $itemsPerPage;

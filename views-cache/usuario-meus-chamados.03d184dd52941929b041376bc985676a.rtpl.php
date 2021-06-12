@@ -102,10 +102,19 @@
                       </td>
                  
                  
-
+                      
                     <td><br><center><?php echo formatDate($value1["data_registro"]); ?></td>
+
+                      <?php if( $value1["situacao"] == 'Pendente' ){ ?>
+
                     <td><br><center> <a style="width: 80px;" href="/usuario/chamados/delete/<?php echo $value1["id_chamado"]; ?>"  onclick="return confirm('Deseja realmente excluir o chamado nº <?php echo $value1["id_chamado"]; ?>?')" class="btn btn-danger btn-sm"> Excluir</a></td>
-                   
+                      <?php } ?>
+
+                       <?php if( $value1["situacao"] == 'Finalizado' ){ ?>
+
+                    <td><br><center>Chamado finalizado</a></td>
+                      <?php } ?>
+
                    
                   </tr>
                     

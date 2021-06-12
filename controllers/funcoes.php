@@ -61,7 +61,7 @@ use \Projeto\Model\Chamado;
 
 	function totalChamadosFinalizados(){
 
-		$total = Call::totalChamadosFinalizados();
+		$total = Chamado::totalChamadosFinalizados();
 
 	   return  $total['chamadosFinalizados'];
 	}

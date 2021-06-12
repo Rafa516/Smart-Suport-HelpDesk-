@@ -5,13 +5,13 @@
             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a style="background-color: #01A9DB;color: white" class="nav-link active" id="home-tab"
-                        data-toggle="tab" role="tab" aria-controls="home" aria-selected="false"><b>Chamados Pendentes -   
-                          {if="totalChamadosPendentes() == 0"}
+                        data-toggle="tab" role="tab" aria-controls="home" aria-selected="false"><b>Chamados Finalizados -   
+                          {if="totalChamadosFinalizados() == 0"}
                           Nenhum Registrado
-                          {elseif="totalChamadosPendentes() == 1"}
-                          {function="totalChamadosPendentes()"} Registrado
+                          {elseif="totalChamadosFinalizados() == 1"}
+                          {function="totalChamadosFinalizados()"} Registrado
                           {else}
-                          {function="totalChamadosPendentes()"} Registrados
+                          {function="totalChamadosFinalizados()"} Registrados
                           {/if}  </b></a>
 
                 </li>
@@ -24,7 +24,7 @@
             </div>
             {/if}
 
-             {if="totalChamadosPendentes() != 0"}
+             {if="totalChamadosFinalizados() != 0"}
              <div class="table-responsive">
                 <div style="float: right">
                   <form  action="/admin/calls-pendings" method="get" >
@@ -55,7 +55,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {loop="$chamadosPendentes"}
+                  {loop="$chamadosFinalizados"}
                   <tr style="font-size: 15px;font-weight: normal;">
                      <td><br><center>{$value.id_chamado}</td>
                     <td><br><center>{$value.nome}</td>
@@ -80,7 +80,7 @@
                      <td><br><center>
                      
 
-                          <a style="width: 80px;" href="/admin/chamado-situacao/{$value1.id_chamado}" onclick="return confirm('Deseja alterar a situação do chamado nº {$value1.id_chamado}?')" type="button" class="btn btn-outline-danger btn-sm ">Pendente</a></td>
+                          <a style="width: 80px;color: white;" type="button" class="btn btn-success btn-sm "><b>Finalizado</b></a></td>
                      
                       </td>
                  

@@ -11,14 +11,14 @@
 
           <center>
             <!--Widget Start-->
-             <a href="/admin/chamados-pendentes"><div class="card-body color" style="background-color:#FF4000">
+             <a href="admin/chamados-pendentes"><div class="card-body color" style="background-color:#FF4000">
                 <div class="float-left">
                     <h3>
                         <h3>
                             <center><span class="count">Chamados Pendentes</span></center>
                         </h3><b>
                         <br><center> <i class="fas fa-exclamation-triangle" aria-hidden="true"></i></center>
-                        <?php if( totalChamadosPendentes() == 0 ){ ?>
+                         <?php if( totalChamadosPendentes() == 0 ){ ?>
 
                          <center><p style="font-size: 20px;">Nenhum Chamado</p></center>
                         
@@ -39,13 +39,27 @@
             <!--Widget End-->
             
             <!--Widget Start-->
-             <a href=""><div class="card-body color" style="background-color:#3ADF00">
+             <a href="admin/chamados-finalizados"><div class="card-body color" style="background-color:#3ADF00">
                 <div class="float-left">
                     <h3>
                         <h3><b>
                             <center><span class="count">Chamados Finalizados</span></center>
                         </h3>
                         <br><center> <i class="fas fa-check-square" aria-hidden="true"></i></center>
+                         <?php if( totalChamadosPendentes() == 0 ){ ?>
+
+                         <center><p style="font-size: 20px;">Nenhum Chamado</p></center>
+                        
+                        <?php }elseif( totalChamadosFinalizados() == 1 ){ ?>
+
+                         <center><p style="font-size: 20px;"><?php echo totalChamadosFinalizados(); ?> Chamado</p></center>
+                        
+                        <?php }else{ ?>
+
+                         <center><p style="font-size: 20px;"><?php echo totalChamadosFinalizados(); ?> Chamados</p></center></b>
+                        
+                        <?php } ?>
+
                        
                 </div>
 
@@ -59,17 +73,17 @@
                             <center><span class="count">Usuários Cadastrados</span></center>
                         </h3>
                         <br><center> <i class="fas fa-users" aria-hidden="true"></i></center>
-                        <?php if( totalChamadosPendentes() == 0 ){ ?>
+                        <?php if( totalUsuarios() == 0 ){ ?>
 
                          <center><p style="font-size: 20px;">Nenhum usuário</p></center>
                         
-                        <?php }elseif( totalChamadosPendentes() == 1 ){ ?>
+                        <?php }elseif( totalUsuarios() == 1 ){ ?>
 
-                         <center><p style="font-size: 20px;"><?php echo totalChamadosPendentes(); ?> Usuário</p></center>
+                         <center><p style="font-size: 20px;"><?php echo totalUsuarios(); ?> Usuário</p></center>
                         
                         <?php }else{ ?>
 
-                         <center><p style="font-size: 20px;"><?php echo totalChamadosPendentes(); ?> Usuários</p></center></b>
+                         <center><p style="font-size: 20px;"><?php echo totalUsuarios(); ?> Usuários</p></center></b>
                         
                         <?php } ?>
 

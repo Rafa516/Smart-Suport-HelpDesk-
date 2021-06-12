@@ -6,16 +6,16 @@
             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a style="background-color: #01A9DB;color: white" class="nav-link active" id="home-tab"
-                        data-toggle="tab" role="tab" aria-controls="home" aria-selected="false"><b>Chamados Pendentes -   
-                          <?php if( totalChamadosPendentes() == 0 ){ ?>
+                        data-toggle="tab" role="tab" aria-controls="home" aria-selected="false"><b>Chamados Finalizados -   
+                          <?php if( totalChamadosFinalizados() == 0 ){ ?>
 
                           Nenhum Registrado
-                          <?php }elseif( totalChamadosPendentes() == 1 ){ ?>
+                          <?php }elseif( totalChamadosFinalizados() == 1 ){ ?>
 
-                          <?php echo totalChamadosPendentes(); ?> Registrado
+                          <?php echo totalChamadosFinalizados(); ?> Registrado
                           <?php }else{ ?>
 
-                          <?php echo totalChamadosPendentes(); ?> Registrados
+                          <?php echo totalChamadosFinalizados(); ?> Registrados
                           <?php } ?>  </b></a>
 
                 </li>
@@ -30,7 +30,7 @@
             <?php } ?>
 
 
-             <?php if( totalChamadosPendentes() != 0 ){ ?>
+             <?php if( totalChamadosFinalizados() != 0 ){ ?>
 
              <div class="table-responsive">
                 <div style="float: right">
@@ -62,7 +62,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php $counter1=-1;  if( isset($chamadosPendentes) && ( is_array($chamadosPendentes) || $chamadosPendentes instanceof Traversable ) && sizeof($chamadosPendentes) ) foreach( $chamadosPendentes as $key1 => $value1 ){ $counter1++; ?>
+                  <?php $counter1=-1;  if( isset($chamadosFinalizados) && ( is_array($chamadosFinalizados) || $chamadosFinalizados instanceof Traversable ) && sizeof($chamadosFinalizados) ) foreach( $chamadosFinalizados as $key1 => $value1 ){ $counter1++; ?>
 
                   <tr style="font-size: 15px;font-weight: normal;">
                      <td><br><center><?php echo $value1["id_chamado"]; ?></td>
@@ -94,7 +94,7 @@
                      <td><br><center>
                      
 
-                          <a style="width: 80px;" href="/admin/chamado-situacao/<?php echo $value1["id_chamado"]; ?>" onclick="return confirm('Deseja alterar a situação do chamado nº <?php echo $value1["id_chamado"]; ?>?')" type="button" class="btn btn-outline-danger btn-sm ">Pendente</a></td>
+                          <a style="width: 80px;color: white;" type="button" class="btn btn-success btn-sm "><b>Finalizado</b></a></td>
                      
                       </td>
                  

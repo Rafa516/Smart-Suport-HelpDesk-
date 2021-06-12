@@ -85,10 +85,15 @@
                       </td>
                  
                  
-
+                      
                     <td><br><center>{function="formatDate($value.data_registro)"}</td>
+
+                      {if="$value.situacao == 'Pendente'"}
                     <td><br><center> <a style="width: 80px;" href="/usuario/chamados/delete/{$value.id_chamado}"  onclick="return confirm('Deseja realmente excluir o chamado nº {$value.id_chamado}?')" class="btn btn-danger btn-sm"> Excluir</a></td>
-                   
+                      {/if}
+                       {if="$value.situacao == 'Finalizado'"}
+                    <td><br><center>Chamado finalizado</a></td>
+                      {/if}
                    
                   </tr>
                     

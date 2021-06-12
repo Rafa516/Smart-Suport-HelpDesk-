@@ -37,7 +37,9 @@
             <div class="col-md-7">
               <p class="text-muted">           
               <p style="font-size: 18px;color: #585858;" class="small mb-1"><b>Email:</b>
-                <?php echo $usuario["email"]; ?></p>  
+                <?php echo $usuario["email"]; ?></p> 
+                <p style="font-size: 18px;color: #585858;" class="small mb-1"><b>Login:</b>
+                <?php echo $usuario["login"]; ?></p>  
                  <p style="font-size: 18px;color: #585858;" class="small mb-1"><b>Loja:</b>
                 <?php echo $usuario["loja"]; ?></p> 
                  <p style="font-size: 18px;color: #585858;" class="small mb-1"><b>Cargo:</b>
