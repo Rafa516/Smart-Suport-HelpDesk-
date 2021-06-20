@@ -46,7 +46,7 @@
                             <center><span class="count">Chamados Finalizados</span></center>
                         </h3>
                         <br><center> <i class="fas fa-check-square" aria-hidden="true"></i></center>
-                         <?php if( totalChamadosPendentes() == 0 ){ ?>
+                         <?php if( totalChamadosFinalizados() == 0 ){ ?>
 
                          <center><p style="font-size: 20px;">Nenhum Chamado</p></center>
                         

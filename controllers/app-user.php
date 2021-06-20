@@ -200,7 +200,10 @@ $app->get('/usuario/perfil', function() {
 
 	$page = new Page();
 
-	$page->setTpl("usuario-perfil");
+	$page->setTpl("usuario-perfil",[
+	'alteracaoErro'=>Usuario::getError(),
+	'alteracaoSucesso'=>Usuario::getSuccess()
+	]);
 
 });
 
@@ -236,6 +239,41 @@ $app->post("/usuario/perfil/editar-imagem/:id_usuario", function ($id_usuario) {
 	$usuario->alterarImagemPerfil();
 
 	header('Location: /');
+	exit;
+
+});
+
+//---------ROTA PARA ALTERAR SENHA DO USUÁRIO  - POST---------------------//
+
+$app->post("/perfil/alterar-senha", function(){
+
+
+
+	if ($_POST['senha_atual'] === $_POST['nova_senha']) {
+
+		Usuario::setError("A sua nova senha deve ser diferente da atual.");
+		header("Location: /usuario/perfil");
+		exit;		
+
+	}
+
+	$usuario = Usuario::getFromSession();
+
+	if (!password_verify($_POST['senha_atual'], $usuario->getsenha())) {
+
+		Usuario::setError("A senha atual está inválida.");
+		header("Location: /usuario/perfil");
+		exit;			
+
+	}
+
+	$usuario->setsenha($_POST['nova_senha']);
+
+	$usuario->editarUsuario();
+
+	Usuario::setSuccess("Senha alterada com sucesso.");
+
+	header("Location: /usuario/perfil");
 	exit;
 
 });

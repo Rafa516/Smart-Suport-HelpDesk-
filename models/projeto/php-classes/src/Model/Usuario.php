@@ -178,7 +178,7 @@ class Usuario extends Model {
 		$results = $sql->select("CALL sp_cadastro_usuario(:nome,:login,:senha,:email,:inadmin,:loja,:cargo,:foto)",array(
 			":nome"=>$this->getnome(),
 			":login"=>$this->getlogin(),
-			":senha" => Usuario::getPasswordHash($this->getsenha()),
+			":senha"=>Usuario::getPasswordHash($this->getsenha()),
 			":email"=>$this->getemail(),
 			":inadmin"=>$this->getinadmin(),
 			":loja"=>$this->getloja(),
@@ -197,9 +197,10 @@ class Usuario extends Model {
 
 		$sql  = new Sql();
 
-		$results = $sql->select("CALL sp_editar_usuario(:id_usuario,:nome,:loja,:inadmin,:cargo)",array(
+		$results = $sql->select("CALL sp_editar_usuario(:id_usuario,:nome,:senha,:loja,:inadmin,:cargo)",array(
 			":id_usuario"=>$this->getid_usuario(),
 			":nome"=>$this->getnome(),
+			":senha"=>Usuario::getPasswordHash($this->getsenha()),
 			":loja"=>$this->getloja(),
 			":inadmin"=>$this->getinadmin(),
 			":cargo"=>$this->getcargo(),

@@ -37,6 +37,23 @@ $app->get("/admin/usuarios/delete/:id_usuario",function($id_usuario){
  	exit;
 });
 
+//---------ROTA PARA DELETAR O CHAMADO ----------------------//
+
+$app->get("/admin/chamados/delete/:id_chamado",function($id_chamado){
+
+	$chamado = new Chamado();
+
+	$chamado->get((int)$id_chamado);
+
+	$chamado->delete();
+
+	Usuario::setSuccess("Chamado removido com sucesso.");
+
+	header("Location: /admin/chamados");
+ 	exit;
+});
+
+
 //---------ROTA DO FORMULÁRIO DE LOGIN----------------------//
 
 $app->post('/admin/login', function() {
@@ -414,7 +431,10 @@ $app->get('/admin/perfil', function() {
 
 	$page = new PageAdmin();
 
-	$page->setTpl("admin-perfil");
+	$page->setTpl("admin-perfil",[
+	'alteracaoErro'=>Usuario::getError(),
+	'alteracaoSucesso'=>Usuario::getSuccess()
+	]);
 
 });
 
@@ -450,6 +470,41 @@ $app->post("/admin/perfil/editar-imagem/:id_usuario", function ($id_usuario) {
 	$usuario->alterarImagemPerfil();
 
 	header('Location: /admin/login');
+	exit;
+
+});
+
+//---------ROTA PARA ALTERAR SENHA DO USUÁRIO  - POST---------------------//
+
+$app->post("/perfil/alterar-senha-admin", function(){
+
+
+
+	if ($_POST['senha_atual'] === $_POST['nova_senha']) {
+
+		Usuario::setError("A sua nova senha deve ser diferente da atual.");
+		header("Location: /admin/perfil");
+		exit;		
+
+	}
+
+	$usuario = Usuario::getFromSession();
+
+	if (!password_verify($_POST['senha_atual'], $usuario->getsenha())) {
+
+		Usuario::setError("A senha atual está inválida.");
+		header("Location: /admin/perfil");
+		exit;			
+
+	}
+
+	$usuario->setsenha($_POST['nova_senha']);
+
+	$usuario->editarUsuario();
+
+	Usuario::setSuccess("Senha alterada com sucesso.");
+
+	header("Location: /admin/perfil");
 	exit;
 
 });

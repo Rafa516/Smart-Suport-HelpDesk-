@@ -10,6 +10,25 @@
         </li>
       </ul>
 
+
+        <?php if( $alteracaoErro != '' ){ ?>
+
+                <div class="alert alert-danger">
+                    <?php echo $alteracaoErro; ?>
+
+                </div>
+                <?php } ?>
+
+
+                <?php if( $alteracaoSucesso != '' ){ ?>
+
+                <div class="alert alert-success">
+                    <?php echo $alteracaoSucesso; ?>
+
+                </div>
+                <?php } ?>
+
+
       <div class="row mt-5 align-items-center">
         <div class="col-md-3 text-center mb-5">
           <div class="avatar avatar-xl">
@@ -52,7 +71,9 @@
 
       </div>
       <center><button data-toggle="modal" onclick="alertAlterarDados()" data-target="#dateModal"
-          class="btn btn-success"><b>Alterar Dados</b> </button></center>
+          class="btn btn-success"><b>Alterar Dados</b> </button>
+           <button data-toggle="modal" data-target="#dateModal1"
+          class="btn btn-success"><b>Alterar senha</b> </button></center>
       <hr class="my-4" />
 
     </div>
@@ -77,7 +98,8 @@
         <form class="form-group" action="/usuario/perfil/editar/<?php echo $usuario["id_usuario"]; ?>" method="post"><br>
 
 
-          <div class="form-group"><label class="small mb-1"><b>Nome</b></label>
+          <div class="form-group"><label class="small mb-1"><b
+                      style="font-size:17px;color: #585858">Nome</b></label>
             <input class="form-control py-1" value='<?php echo getUsuarioNome(); ?>' type="text" name="nome" required />
           </div>
 
@@ -86,7 +108,8 @@
 
                <?php if( $usuario["loja"] == 'Loja/Empresa 1' ){ ?>
 
-             <div class="form-group"><label class="small mb-1"><b>Loja</b></label>
+             <div class="form-group"><label class="small mb-1"><b
+                      style="font-size:17px;color: #585858">Loja</b></label>
             <select class="form-control py-1" name="loja" id="loja">
            <option value="Loja/Empresa 1">Loja/Empresa 1</option>
             <option value="Loja/Empresa 2">Loja/Empresa 2</option>
@@ -97,7 +120,8 @@
 
           <?php }elseif( $usuario["loja"] == 'Loja/Empresa 2' ){ ?>
 
-             <div class="form-group"><label class="small mb-1"><b>Loja</b></label>
+             <div class="form-group"><label class="small mb-1"><b
+                      style="font-size:17px;color: #585858">Loja</b></label>
             <select class="form-control py-1" name="loja" id="loja">
             <option value="Loja/Empresa 2">Loja/Empresa 2</option>
             <option value="Loja/Empresa 1">Loja/Empresa 1</option>
@@ -108,7 +132,8 @@
 
             <?php }elseif( $usuario["loja"] == 'Loja/Empresa 3' ){ ?>
 
-             <div class="form-group"><label class="small mb-1"><b>Loja</b></label>
+             <div class="form-group"><label class="small mb-1"><b
+                      style="font-size:17px;color: #585858">Loja</b></label>
             <select class="form-control py-1" name="loja" id="loja">
             <option value="Loja/Empresa 3">Loja/Empresa 3</option>
             <option value="Loja/Empresa 2">Loja/Empresa 2</option>
@@ -120,7 +145,8 @@
           <?php } ?>
 
 
-           <div class="form-group"><label class="small mb-1"><b>Cargo</b></label>
+           <div class="form-group"><label class="small mb-1"><b
+                      style="font-size:17px;color: #585858">Cargo</b></label>
             <select class="form-control py-1" name="cargo" id="cargo">
             <option value="<?php echo $usuario["cargo"]; ?>"><?php echo $usuario["cargo"]; ?></option>
            <option value="Recursos Humanos">Recursos Humanos</option>
@@ -138,13 +164,41 @@
             <option value="Motorista">Motorista</option>
            
             </select>
+          </div> 
+
+          <input class="btn btn-success btn btn-block" type="submit" value="Alterar">
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Senha -->
+<div class="modal fade" id="dateModal1" tabindex="-1" role="dialog" aria-labelledby="dateModal1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="dateModal1">Alterar Senha</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-group" action="/perfil/alterar-senha" method="post"><br>
+
+
+          <div class="form-group"><label class="small mb-1"><b
+                      style="font-size:17px;color: #585858">Senha Atual</b></label>
+            <input class="form-control py-1" value='' type="password" id="senha_atual"  name="senha_atual" required />
           </div>
 
-         
-
-       
-
-         
+          <div class="form-group"><label class="small mb-1"><b
+                      style="font-size:17px;color: #585858">Nova Senha</b></label>
+            <input class="form-control py-1" value='' type="password" name="nova_senha" required />
+          </div>
+               
 
           <input class="btn btn-success btn btn-block" type="submit" value="Alterar">
 
@@ -170,7 +224,8 @@
           enctype="multipart/form-data"><br>
 
 
-          <div class="form-group"><label class="small mb-1"><b>Foto</b></label>
+          <div class="form-group"><label class="small mb-1"><b
+                      style="font-size:17px;color: #585858">Foto</b></label>
             <input id="addPhotoProfile"  class="form-control py-1" type="file" id="foto" name="foto" required="" />
           </div>
 

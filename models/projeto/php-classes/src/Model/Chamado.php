@@ -253,7 +253,6 @@ class Chamado extends Model {
 
 	
 
-
 	//Método para pegar os valores do array
 	public function getValues()
 	{
