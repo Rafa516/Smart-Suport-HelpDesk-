@@ -69,8 +69,17 @@
                   <tr style="font-size: 15px;font-weight: normal;">
                     
                     <td><br><center> 
-                     
+
+
+                     <?php if( $value1["foto"] == 0 ){ ?>
+
                       <img src="/../res/ft_perfil/ft_male.png" style="height: 50px;width: 50px;border-radius: 30px;">
+                       <?php }else{ ?>
+
+                      <img src="/../res/ft_perfil/<?php echo $value1["foto"]; ?>" style="height: 50px;width: 50px;border-radius: 30px;">
+                      <?php } ?>
+
+
                     
                     </td>
                     <td><br><center><?php echo $value1["nome"]; ?></td>

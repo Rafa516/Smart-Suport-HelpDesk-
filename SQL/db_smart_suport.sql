@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 01/06/2021 às 16:37
+-- Tempo de geração: 21-Jun-2021 às 09:16
 -- Versão do servidor: 5.7.34-0ubuntu0.18.04.1
--- Versão do PHP: 7.2.24-0ubuntu0.18.04.7
+-- versão do PHP: 7.2.24-0ubuntu0.18.04.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,11 +60,12 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editar_situacao` (IN `pid_chamad
           
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editar_usuario` (IN `pid_usuario` INT(11), IN `pnome` VARCHAR(64), IN `ploja` VARCHAR(64), IN `pinadmin` TINYINT(4), IN `pcargo` VARCHAR(64))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editar_usuario` (IN `pid_usuario` INT(11), IN `pnome` VARCHAR(64), IN `psenha` VARCHAR(256), IN `ploja` VARCHAR(64), IN `pinadmin` TINYINT(4), IN `pcargo` VARCHAR(64))  BEGIN
  
     UPDATE tb_usuarios
     SET
         nome = pnome,
+        senha = psenha,
         loja = ploja,
         inadmin = pinadmin,
         cargo = pcargo
@@ -106,7 +107,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_chamados`
+-- Estrutura da tabela `tb_chamados`
 --
 
 CREATE TABLE `tb_chamados` (
@@ -121,7 +122,7 @@ CREATE TABLE `tb_chamados` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_chamados_fotos`
+-- Estrutura da tabela `tb_chamados_fotos`
 --
 
 CREATE TABLE `tb_chamados_fotos` (
@@ -135,7 +136,7 @@ CREATE TABLE `tb_chamados_fotos` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_usuarios`
+-- Estrutura da tabela `tb_usuarios`
 --
 
 CREATE TABLE `tb_usuarios` (
@@ -152,26 +153,26 @@ CREATE TABLE `tb_usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Despejando dados para a tabela `tb_usuarios`
+-- Extraindo dados da tabela `tb_usuarios`
 --
 
 INSERT INTO `tb_usuarios` (`id_usuario`, `email`, `data_registro`, `nome`, `login`, `senha`, `inadmin`, `cargo`, `loja`, `foto`) VALUES
-(28, 'rafaxvi@hotmail.com', '2021-01-12 21:36:59', 'Admin', 'suporte', '$2y$12$hKaYkmysAUxuw4gYLdTL3eyB7eVzwt4.mK4gGCQUYMD0X/YNzINrG', 1, 'Suporte Técnico', 'Loja/Empresa 2', '0'),
-(40, 'roliveirarso516@gmail.com', '2021-05-26 01:30:54', 'Rafael Oliveira', 'rafael.oliveira', '$2y$12$/sUx05g9lx4Jz0VhptkYcuE.s9TwrV0Cbmie3YGrs8B2cVQ/9Lkj2', 0, 'Gerente', 'Loja/Empresa 2', '20210601040626');
+(28, 'rafaxvi@hotmail.com', '2021-01-12 21:36:59', 'Administrador', 'suporte', '$2y$12$dMIBKhNJp.nFBTOropmL5uXOn1hbWogni7VaREjkiukco0cn.P.cW', 1, 'Suporte Técnico', 'Loja/Empresa 2', '20210611080655'),
+(40, 'roliveirarso516@gmail.com', '2021-05-26 01:30:54', 'Rafael Oliveira', 'rafael.oliveira', '$2y$12$WW0Sb9OUFPiUvbsDOLGIxOXdo5bNITBO6Z/4KgcJeInapqZBLhenS', 0, 'Gerente', 'Loja/Empresa 2', '20210601040626');
 
 --
--- Índices de tabelas apagadas
+-- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `tb_chamados`
+-- Índices para tabela `tb_chamados`
 --
 ALTER TABLE `tb_chamados`
   ADD PRIMARY KEY (`id_chamado`),
   ADD KEY `fk_calls_users` (`id_usuario`);
 
 --
--- Índices de tabela `tb_chamados_fotos`
+-- Índices para tabela `tb_chamados_fotos`
 --
 ALTER TABLE `tb_chamados_fotos`
   ADD PRIMARY KEY (`id_foto`),
@@ -179,27 +180,27 @@ ALTER TABLE `tb_chamados_fotos`
   ADD KEY `fk_callphotos_users` (`id_usuario`);
 
 --
--- Índices de tabela `tb_usuarios`
+-- Índices para tabela `tb_usuarios`
 --
 ALTER TABLE `tb_usuarios`
   ADD PRIMARY KEY (`id_usuario`),
   ADD KEY `iduser` (`id_usuario`);
 
 --
--- AUTO_INCREMENT de tabelas apagadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `tb_chamados`
 --
 ALTER TABLE `tb_chamados`
-  MODIFY `id_chamado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_chamado` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `tb_chamados_fotos`
 --
 ALTER TABLE `tb_chamados_fotos`
-  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `tb_usuarios`
@@ -208,17 +209,17 @@ ALTER TABLE `tb_usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- Restrições para dumps de tabelas
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restrições para tabelas `tb_chamados`
+-- Limitadores para a tabela `tb_chamados`
 --
 ALTER TABLE `tb_chamados`
   ADD CONSTRAINT `fk_chamados_usuarios` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Restrições para tabelas `tb_chamados_fotos`
+-- Limitadores para a tabela `tb_chamados_fotos`
 --
 ALTER TABLE `tb_chamados_fotos`
   ADD CONSTRAINT `fk_chamados_fotos_chamados` FOREIGN KEY (`id_chamado`) REFERENCES `tb_chamados` (`id_chamado`) ON DELETE CASCADE ON UPDATE CASCADE,

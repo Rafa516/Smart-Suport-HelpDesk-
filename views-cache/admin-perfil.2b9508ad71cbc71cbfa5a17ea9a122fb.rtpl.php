@@ -133,7 +133,7 @@
 
 
           <div class="form-group"><label class="small mb-1"><b
-                      style="font-size:17px;color: #585858">Senha Atual</b>Nome</b></label>
+                      style="font-size:17px;color: #585858">Nome</b></label>
             <input class="form-control py-1" value='<?php echo getUsuarioNome(); ?>' type="text" name="nome" required />
           </div>
 
@@ -143,7 +143,7 @@
                <?php if( $usuario["loja"] == 'Loja/Empresa 1' ){ ?>
 
              <div class="form-group"><label class="small mb-1"><b
-                      style="font-size:17px;color: #585858">Senha Atual</b>Loja</b></label>
+                      style="font-size:17px;color: #585858">Loja</b></label>
             <select class="form-control py-1" name="loja" id="loja">
            <option value="Loja/Empresa 1">Loja/Empresa 1</option>
             <option value="Loja/Empresa 2">Loja/Empresa 2</option>
@@ -155,7 +155,7 @@
           <?php }elseif( $usuario["loja"] == 'Loja/Empresa 2' ){ ?>
 
              <div class="form-group"><label class="small mb-1"><b
-                      style="font-size:17px;color: #585858">Senha Atual</b>Loja</b></label>
+                      style="font-size:17px;color: #585858">Loja</b></label>
             <select class="form-control py-1" name="loja" id="loja">
             <option value="Loja/Empresa 2">Loja/Empresa 2</option>
             <option value="Loja/Empresa 1">Loja/Empresa 1</option>
@@ -167,7 +167,7 @@
             <?php }elseif( $usuario["loja"] == 'Loja/Empresa 3' ){ ?>
 
              <div class="form-group"><label class="small mb-1"><b
-                      style="font-size:17px;color: #585858">Senha Atual</b>Loja</b></label>
+                      style="font-size:17px;color: #585858">Loja</b></label>
             <select class="form-control py-1" name="loja" id="loja">
             <option value="Loja/Empresa 3">Loja/Empresa 3</option>
             <option value="Loja/Empresa 2">Loja/Empresa 2</option>
@@ -180,7 +180,7 @@
 
 
            <div class="form-group"><label class="small mb-1"><b
-                      style="font-size:17px;color: #585858">Senha Atual</b>Cargo</b></label>
+                      style="font-size:17px;color: #585858">Cargo</b></label>
             <select class="form-control py-1" name="cargo" id="cargo">
             <option value="<?php echo $usuario["cargo"]; ?>"><?php echo $usuario["cargo"]; ?></option>
            <option value="Recursos Humanos">Recursos Humanos</option>
@@ -231,7 +231,7 @@
 
 
           <div class="form-group"><label class="small mb-1"><b
-                      style="font-size:17px;color: #585858">Senha Atual</b>Foto</b></label>
+                      style="font-size:17px;color: #585858">Foto</b></label>
             <input id="addPhotoProfile"  class="form-control py-1" type="file" id="foto" name="foto" required="" />
           </div>
 

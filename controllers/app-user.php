@@ -1,4 +1,4 @@
- <?php
+<?php
 
 use \Projeto\Page;
 use \Projeto\Model\Usuario;

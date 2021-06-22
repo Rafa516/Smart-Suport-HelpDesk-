@@ -61,8 +61,14 @@
                   <tr style="font-size: 15px;font-weight: normal;">
                     
                     <td><br><center> 
-                     
+
+
+                     {if="$value.foto == 0"}
                       <img src="/../res/ft_perfil/ft_male.png" style="height: 50px;width: 50px;border-radius: 30px;">
+                       {else}
+                      <img src="/../res/ft_perfil/{$value.foto}" style="height: 50px;width: 50px;border-radius: 30px;">
+                      {/if}
+
                     
                     </td>
                     <td><br><center>{$value.nome}</td>
