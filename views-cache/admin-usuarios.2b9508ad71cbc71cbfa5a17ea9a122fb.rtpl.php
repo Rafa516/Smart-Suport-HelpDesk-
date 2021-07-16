@@ -35,9 +35,11 @@
             </div>
             <?php } ?>
 
-        <div class="table-responsive">
+
+
+        
             <button data-toggle="modal"  data-target="#registerModal"class="btn btn-primary"><b>Cadastrar Usuário</b> </button>
-           <div style="float: right">
+           <div class="search" style="float: right">
                   <form  action="/admin/usuarios" method="get" >
                         <div class="input-group">
                           <input   type="text" name="search"  class="form-control" placeholder="Digite sua pesquisa...">
@@ -48,6 +50,8 @@
                         </div>
                       </form>
                  </div><br><br>
+
+            <div class="table-responsive">
             <table class="table table-hover  table-bordered">
                 <thead style="background-color: #D8D8D8">
                   <tr style="font-size: 16px; font-weight: bold; " >
@@ -91,8 +95,10 @@
                     <td><br><center><?php echo formatDate($value1["data_registro"]); ?></td>
                     <td><br>
                       <center>
-                      
+                   
+                   <div class="button">   
                   <a style="width: 80px;" href="/admin/usuarios/editar/<?php echo $value1["id_usuario"]; ?>"  class="btn btn-success btn-sm"> Editar</a>
+                </div>
                    
                     <a style="width: 80px;" href="/admin/usuarios/delete/<?php echo $value1["id_usuario"]; ?>"  onclick="return confirm('Deseja realmente excluir o usuário <?php echo $value1["nome"]; ?>?')" class="btn btn-danger btn-sm"> Excluir</a>
                      
@@ -105,7 +111,10 @@
 
                 </tbody>
               </table><br>
+              </div>
               <center>
+
+
             <div class="box-footer clearfix">
               <ul class="pagination">
                <?php $counter1=-1;  if( isset($pages) && ( is_array($pages) || $pages instanceof Traversable ) && sizeof($pages) ) foreach( $pages as $key1 => $value1 ){ $counter1++; ?>
@@ -123,11 +132,11 @@
           </center>
           </div>
 
-          
+          <a href="javascript:history.back()" class="btn btn-info btn-xs">Voltar</a>
             <hr class="my-4" />
+             
 
-
-        </div>
+        
     </div>
 </div>
 

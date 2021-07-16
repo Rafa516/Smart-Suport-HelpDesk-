@@ -101,7 +101,7 @@ header{
   background: #DF3A01;
   text-decoration: none;
   float: right;
-  margin-top: -25px;
+  margin-top: -30px;
   margin-right: 10px;
   border-radius: 2px;
   font-size: 15px;
@@ -186,6 +186,7 @@ label #sidebar_btn{
   margin: 5px 0;
   transition: 0.5s;
   transition-property: color;
+  margin-top: -1px;
 }
 
 label #sidebar_btn:hover{
@@ -326,6 +327,10 @@ img {
     font-weight: 300;
 }
 
+.button{
+    margin-bottom: 5%;
+  }
+
 /* Responsivo CSS */
 
 @media screen and (max-width: 780px){
@@ -452,5 +457,14 @@ img {
   }
    .logo{
     width: 100%;
+  }
+
+  .search{
+    margin-top: 10%;
+    margin-bottom: 5%;
+  }
+
+  .button{
+    margin-bottom: 10%;
   }
 }

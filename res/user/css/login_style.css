@@ -92,7 +92,7 @@ body{
 .form .user-login:hover, .form .user-login:focus, .form .user-login:active{
 	border-left: solid 8px #0B173B;
 	border-right: solid 8px #0B173B;
-	box-shadow: 0 0 100px rgba(170, 191, 63, 1);
+	box-shadow: 0 0 100px rgba(11, 23, 59, 1);
 }
 
 .form .options-01{

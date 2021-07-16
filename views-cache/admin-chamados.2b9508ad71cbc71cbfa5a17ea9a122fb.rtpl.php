@@ -32,8 +32,8 @@
 
              <?php if( totalChamados() != 0 ){ ?>
 
-             <div class="table-responsive">
-                <div style="float: right">
+             
+                <div class="search" style="float: right">
                   <form  action="/admin/chamados" method="get" >
                         <div class="input-group">
                           <input   type="text" name="search"  class="form-control" placeholder="Digite sua pesquisa...">
@@ -44,6 +44,7 @@
                         </div>
                       </form>
                  </div><br><br>
+            <div class="table-responsive">
             <table class="table table-hover  table-bordered">
                 <thead style="background-color: #D8D8D8">
                   <tr style="font-size: 16px; font-weight: bold; " >
@@ -114,6 +115,7 @@
 
                 </tbody>
               </table>
+              </div>
               <br>
               <center>
             <div class="box-footer clearfix">
@@ -141,7 +143,7 @@
             <hr class="my-4" />
 
 
-        </div>
+        
     </div>
 </div>
 

@@ -8,17 +8,20 @@
                         data-toggle="tab" role="tab" aria-controls="home" aria-selected="false"><b>Início</b></a>
                 </li>
             </ul>
-              <center><img src="res/user/img/logo.png"  class="logo"alt="">
+
+           
+
+              <center><img src="../res/user/img/logo.png"  class="logo"alt=""></center>
              {if="$usuario.loja == 'Loja/Empresa 1'"}
-            <p>Bem vindo <b>{function="getUsuarioNome()"}</b> ao Sistema Web de Suporte Técnico da Loja/Empresa 1.</p>
+            <center><p>Bem vindo <b>{function="getUsuarioNome()"}</b> ao Sistema Web de Suporte Técnico da Loja/Empresa 1.</p>
             <p>Realize a abertura do chamado para o técnico do suporte realizar a verificação ou manutenção.</center>
 
             {elseif="$usuario.loja == 'Loja/Empresa 2'"}
-            <p>Bem vindo <b>{function="getUsuarioNome()"}</b> ao Sistema Web de Suporte Técnico da Loja/Empresa 2.</p>
+           <center> <p>Bem vindo <b>{function="getUsuarioNome()"}</b> ao Sistema Web de Suporte Técnico da Loja/Empresa 2.</p>
             <p>Realize a abertura do chamado para o técnico do suporte realizar a verificação ou manutenção.</center>
 
             {elseif="$usuario.loja == 'Loja/Empresa 3'"}
-            <p>Bem vindo <b>{function="getUsuarioNome()"}</b> ao Sistema Web de Suporte Técnico da Loja/Empresa 3.</p>
+            <center><p>Bem vindo <b>{function="getUsuarioNome()"}</b> ao Sistema Web de Suporte Técnico da Loja/Empresa 3.</p>
             <p>Realize a abertura do chamado para o técnico do suporte realizar a verificação ou manutenção.</center>
 
 

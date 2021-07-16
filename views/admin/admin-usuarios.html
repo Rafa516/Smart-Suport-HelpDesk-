@@ -28,9 +28,11 @@
                <b> {$errorRegister}</b>
             </div>
             {/if}
-        <div class="table-responsive">
+
+
+        
             <button data-toggle="modal"  data-target="#registerModal"class="btn btn-primary"><b>Cadastrar Usuário</b> </button>
-           <div style="float: right">
+           <div class="search" style="float: right">
                   <form  action="/admin/usuarios" method="get" >
                         <div class="input-group">
                           <input   type="text" name="search"  class="form-control" placeholder="Digite sua pesquisa...">
@@ -41,6 +43,8 @@
                         </div>
                       </form>
                  </div><br><br>
+
+            <div class="table-responsive">
             <table class="table table-hover  table-bordered">
                 <thead style="background-color: #D8D8D8">
                   <tr style="font-size: 16px; font-weight: bold; " >
@@ -80,8 +84,10 @@
                     <td><br><center>{function="formatDate($value.data_registro)"}</td>
                     <td><br>
                       <center>
-                      
+                   
+                   <div class="button">   
                   <a style="width: 80px;" href="/admin/usuarios/editar/{$value.id_usuario}"  class="btn btn-success btn-sm"> Editar</a>
+                </div>
                    
                     <a style="width: 80px;" href="/admin/usuarios/delete/{$value.id_usuario}"  onclick="return confirm('Deseja realmente excluir o usuário {$value.nome}?')" class="btn btn-danger btn-sm"> Excluir</a>
                      
@@ -93,7 +99,10 @@
                   {/loop}
                 </tbody>
               </table><br>
+              </div>
               <center>
+
+
             <div class="box-footer clearfix">
               <ul class="pagination">
                {loop="$pages"}
@@ -107,11 +116,11 @@
           </center>
           </div>
 
-          
+          <a href="javascript:history.back()" class="btn btn-info btn-xs">Voltar</a>
             <hr class="my-4" />
+             
 
-
-        </div>
+        
     </div>
 </div>
 

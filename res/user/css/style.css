@@ -4,8 +4,8 @@ html, body {
 }
 
 strong{
-  margin-left: 280px;
   color:#424242;
+
 }
 
 ul.pagination {
@@ -44,7 +44,7 @@ ul.pagination li a:hover:not(.active) {background-color: #D8D8D8}
 #myWorkContent a {
     display: inline-block;
     vertical-align: middle;
-   border: 1px solid #01A9DB;
+   border: 1px solid #5FB404;
 
 }
 
@@ -65,7 +65,10 @@ ul.pagination li a:hover:not(.active) {background-color: #D8D8D8}
   margin-top: 15px;
   border-style: groove;
   border-width: 5px;
-}
+  }
+
+
+ 
 
 /******HEADER****/
 
@@ -86,7 +89,7 @@ header{
   text-transform: uppercase;
   font-size: 22px;
   font-weight: 900;
-  margin-top: -13px;
+  margin-top: -20px;
 }
 
 .left_area span{
@@ -98,7 +101,7 @@ header{
   background: #DF3A01;
   text-decoration: none;
   float: right;
-  margin-top: -27px;
+  margin-top: -30px;
   margin-right: 10px;
   border-radius: 2px;
   font-size: 15px;
@@ -122,7 +125,7 @@ header{
   padding-top: 30px;
   position: fixed;
   left: 0;
-  width: 285px;
+  width: 255px;
   height: calc(100%);
   transition: 0.5s;
   transition-property: left;
@@ -155,7 +158,7 @@ header{
   width: 100%;
   line-height: 60px;
   
-  padding-left: 20px;
+  padding-left: 40px;
   box-sizing: border-box;
   transition: 0.5s;
   transition-property: background;
@@ -165,7 +168,7 @@ header{
   background: #01A9DB;
   color: #fff;
   text-decoration:none;
-  font-weight: bold
+  font-weight: bold;
 
 }
 
@@ -183,6 +186,7 @@ label #sidebar_btn{
   margin: 5px 0;
   transition: 0.5s;
   transition-property: color;
+  margin-top: -1px;
 }
 
 label #sidebar_btn:hover{
@@ -191,7 +195,6 @@ label #sidebar_btn:hover{
 
 #check:checked ~ .sidebar{
   left: -185px;
-  width: 245px;
 }
 
 #check:checked ~ .sidebar a span{
@@ -202,7 +205,6 @@ label #sidebar_btn:hover{
   font-size: 20px;
   margin-left: 165px;
   width: 100%;
-  padding-left: 40px;
 }
 
 
@@ -242,15 +244,15 @@ label #sidebar_btn:hover{
  
 }
 
+
 .content-inside {
   padding: 20px;
   padding-bottom: 70px;
   padding-bottom: 100px;
-}
-
 
 /******FOOTER****/
 
+}
 .footer{
  
   width: 100%;
@@ -260,9 +262,10 @@ label #sidebar_btn:hover{
 }
 
 
+
 /*-----PERFIL------*/
 .avatar-xl img {
-    width: 250px;
+    width: 200px;
 }
 
 .rounded-circle {
@@ -278,6 +281,10 @@ img {
 .text-muted {
     font-weight: 300;
 }
+
+.button{
+    margin-bottom: 5%;
+  }
 
 /* Responsivo CSS */
 
@@ -295,8 +302,8 @@ img {
   background: #DF3A01;
   text-decoration: none;
   float: right;
-  margin-top: -26px;
-  margin-right: 0px;
+  margin-top: -25px;
+  margin-right: -8px;
   border-radius: 2px;
   font-size: 15px;
   font-weight: 600;
@@ -318,16 +325,11 @@ img {
     margin-left: 0;
   }
 
-/**PAINEL*/
-  .card-body{
-    width: 280px;
-  }
+
 
   .mobile_nav{
     display: block;
     width: calc(100% - 0%);
-      z-index: 1;
-    position: fixed;
   }
 
   .nav_bar{
@@ -343,7 +345,7 @@ img {
   .nav_bar .mobile_profile_image{
     width: 50px;
     height: 50px;
-    border-radius: 60%;
+    border-radius: 50%;
   }
 
   .nav_bar .nav_btn{
@@ -388,23 +390,33 @@ img {
   .active{
     display: block;
   }
-   strong{
+
+  strong{
   margin-left: 20px;
   color:#424242;
 }
-  #addPhoto{
+ #myWorkContent{
+    max-width:245px;
+    height:270px;
+  }
+
+   #addPhoto{
     font-size: 12px;
   }
 
   #addPhotoProfile{
     font-size: 14px;
   }
-  
- #myWorkContent{
-    max-width:245px;
-    height:270px;
+   .logo{
+    width: 100%;
   }
 
-  
-  
+  .search{
+    margin-top: 10%;
+    margin-bottom: 5%;
+  }
+
+  .button{
+    margin-bottom: 10%;
+  }
 }

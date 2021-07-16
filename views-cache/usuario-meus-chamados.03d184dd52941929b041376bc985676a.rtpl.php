@@ -21,6 +21,8 @@
                 </li>
                
             </ul>
+
+
             
 
               <?php if( $profileMsg != '' ){ ?>
@@ -34,9 +36,7 @@
              <?php if( totalChamadosID($usuario["id_usuario"]) != 0 ){ ?>
 
 
-
-             <div class="table-responsive">
-                <div style="float: right">
+                <div class="search" style="float: right">
                   <form  action="/usuario/meus-chamados" method="get" >
                         <div class="input-group">
                           <input   type="text" name="search"  class="form-control" placeholder="Digite sua pesquisa...">
@@ -47,6 +47,8 @@
                         </div>
                       </form>
                  </div><br><br>
+
+            <div class="table-responsive">
             <table class="table table-hover  table-bordered">
                 <thead style="background-color: #D8D8D8">
                   <tr style="font-size: 16px; font-weight: bold; " >
@@ -112,7 +114,7 @@
 
                        <?php if( $value1["situacao"] == 'Finalizado' ){ ?>
 
-                    <td><br><center>Chamado finalizado</a></td>
+                    <td><br><center> <a style="width: 80px;" href=""  onclick="return confirm('Somente chamado PENDENTE podem ser excluído')" class="btn btn-danger btn-sm"> Excluir</a></td>
                       <?php } ?>
 
                    
@@ -125,6 +127,8 @@
                 </tbody>
 
               </table><br>
+
+              </div>
               <center>
             <div class="box-footer clearfix">
               <ul class="pagination">
@@ -150,7 +154,7 @@
             <hr class="my-4" />
 
         </div>
-        </div>
+        
 
     </div>
 
