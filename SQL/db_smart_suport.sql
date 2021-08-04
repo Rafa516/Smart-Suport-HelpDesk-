@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 21-Jun-2021 às 09:16
--- Versão do servidor: 5.7.34-0ubuntu0.18.04.1
--- versão do PHP: 7.2.24-0ubuntu0.18.04.7
+-- Tempo de geração: 03-Ago-2021 às 22:57
+-- Versão do servidor: 5.7.35-0ubuntu0.18.04.1
+-- versão do PHP: 7.2.24-0ubuntu0.18.04.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -157,8 +157,10 @@ CREATE TABLE `tb_usuarios` (
 --
 
 INSERT INTO `tb_usuarios` (`id_usuario`, `email`, `data_registro`, `nome`, `login`, `senha`, `inadmin`, `cargo`, `loja`, `foto`) VALUES
-(28, 'rafaxvi@hotmail.com', '2021-01-12 21:36:59', 'Administrador', 'suporte', '$2y$12$dMIBKhNJp.nFBTOropmL5uXOn1hbWogni7VaREjkiukco0cn.P.cW', 1, 'Suporte Técnico', 'Loja/Empresa 2', '20210611080655'),
-(40, 'roliveirarso516@gmail.com', '2021-05-26 01:30:54', 'Rafael Oliveira', 'rafael.oliveira', '$2y$12$WW0Sb9OUFPiUvbsDOLGIxOXdo5bNITBO6Z/4KgcJeInapqZBLhenS', 0, 'Gerente', 'Loja/Empresa 2', '20210601040626');
+(41, 'adjair.bezerra@gmail.com', '2021-08-04 01:29:00', 'Adjair Nascimento', 'adjair', '$2y$12$BVwXSgeihDzuxsMZjombue.z.MwQ/H.MwtDspuLX2k72yfAoiRrhy', 0, 'Contabilidade', 'Loja/Empresa 1', '0'),
+(42, 'henriquehfa@gmail.com', '2021-08-04 01:30:04', 'Henrique França', 'henrique.frança', '$2y$12$Qh/YZiqCRCvdUjauaN3N5O3qNwja4c6cNQF8hLxAkztNAE5QbhkZa', 0, 'Marketing', 'Loja/Empresa 3', '0'),
+(43, 'admin@gmail.com', '2021-08-04 01:33:56', 'Administrador', 'admin', '$2y$12$qaBJj3c6pXYv3Ndu5ODqI.NF9TgLDc5qfAsRFuZld37TGWVdrEuZu', 1, 'Suporte Técnico', 'Loja/Empresa 1', '20210803100816'),
+(44, 'rafaxvi@hotmail.com', '2021-08-04 01:34:55', 'Rafael Oliveira', 'rafael.oliveira', '$2y$12$l.5PpaJp4nbC3u84.MGpnOHwh34ZSJGne9nIF0Fr2wCKB09a.e7Ri', 0, 'Financeiro', 'Loja/Empresa 3', '20210803100829');
 
 --
 -- Índices para tabelas despejadas
@@ -194,19 +196,19 @@ ALTER TABLE `tb_usuarios`
 -- AUTO_INCREMENT de tabela `tb_chamados`
 --
 ALTER TABLE `tb_chamados`
-  MODIFY `id_chamado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_chamado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `tb_chamados_fotos`
 --
 ALTER TABLE `tb_chamados_fotos`
-  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `tb_usuarios`
 --
 ALTER TABLE `tb_usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- Restrições para despejos de tabelas
