@@ -41,11 +41,13 @@
 
 ## Informações: 
 
-- **Link da página de login adimistrativo no sistema** http://smart-suport.atwebpages.com/admin/login
+- **Link da página de login adimistrativo no sistema** http://smart-suport-online.atwebpages.com/admin/login
      >**Login:** admin
     **Senha:** admin
 
-- **Link da página de login dos colaboradores no sistema**  http://smart-suport-online.atwebpages.com/admin/login
-    >O cadastro do colaborador e realizado somente pelo usuário administrador 
+- **Link da página de login dos colaboradores no sistema**  http://smart-suport-online.atwebpages.com/
+    >O cadastro do colaborador é realizado somente pelo usuário administrador 
+
+- **Link da página do site onde foi hospedado o projeto** https://www.awardspace.com/
 
 
