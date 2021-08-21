@@ -69,7 +69,7 @@
                    {if="nomeFotos($value.id_chamado) == ''"}
                        <td><br><center><b>Sem Fotos</b></td>
                         {else}
-                    <td><br><center>   <a href="/admin/calls/images/{$value.id_chamado}" style="width: 100px;" class="btn btn-info btn-sm" >
+                    <td><br><center>   <a href="/admin/chamados/imagens/{$value.id_chamado}" style="width: 100px;" class="btn btn-info btn-sm" >
                       {if="numFotos($value.id_chamado) == 1"}
                       <b>{function="numFotos($value.id_chamado)"} Foto</b></a>
                       {else}
