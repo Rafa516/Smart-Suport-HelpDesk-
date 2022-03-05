@@ -21,6 +21,18 @@ $app->get('/admin/login', function() {
 
 });
 
+
+//---------ROTA PARA ENCERRAR A SESSÃO----------------------//
+
+$app->get('/user/logout', function() {
+
+	User::logout();
+
+	header("Location: /");
+	exit;
+
+});
+
 //---------ROTA PARA DELETAR O USUÁRIO----------------------//
 
 $app->get("/admin/usuarios/delete/:id_usuario",function($id_usuario){
