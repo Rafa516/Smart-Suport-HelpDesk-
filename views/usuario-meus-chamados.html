@@ -52,7 +52,7 @@
                     <th><center>Fotos</th>
                      <th><center>Situação</th>
                     <th><center>Data de Registro</th>
-                    <th><center>Excluir</th>
+                    <th><center>Solução</th>
 
                   </tr>
                 </thead>
@@ -82,7 +82,9 @@
                       {if="$value.situacao == 'Pendente'"}
                           <b style="width: 80px;color: #FF4000">Pendente</td>
                       {else}
-                       <b style="width: 80px;color: #3ADF00">Finalizado</td>
+                       <b style="width: 80px;color: #3ADF00">Finalizado
+                      </td>
+                        
                       {/if}
                       </td>
                  
@@ -90,16 +92,18 @@
                       
                     <td><br><center>{function="formatDate($value.data_registro)"}</td>
 
-                      {if="$value.situacao == 'Pendente'"}
-                    <td><br><center> <a style="width: 80px;" href="/usuario/chamados/delete/{$value.id_chamado}"  onclick="return confirm('Deseja realmente excluir o chamado nº {$value.id_chamado}?')" class="btn btn-danger btn-sm"> Excluir</a></td>
-                      {/if}
-                       {if="$value.situacao == 'Finalizado'"}
-                    <td><br><center> <a style="width: 80px;" href=""  onclick="return confirm('Somente chamado PENDENTE podem ser excluído')" class="btn btn-danger btn-sm"> Excluir</a></td>
+                      {if="$value.solucao == ''"}
+                    <td><br><center><b>Em Análise</b></center> </td>
+                    
+                      {elseif="$value.situacao == 'Finalizado' && $value.solucao != 'Em Análise' "}
+                       
+                    <td><br><center> <a style="width: 80px;" href="/usuario/chamado-solucao/{$value.id_chamado}"  class="btn btn-success btn-sm">Verificar</a></td>
+                        {else}
+                    <td><br><center><b>Em andamento</b></center> </td>
                       {/if}
                    
                   </tr>
-                    
-                  
+                                
                   {/loop}
 
                 </tbody>
@@ -107,6 +111,9 @@
               </table><br>
 
               </div>
+
+            
+              
               <center>
             <div class="box-footer clearfix">
               <ul class="pagination">

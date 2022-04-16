@@ -136,11 +136,12 @@ class Chamado extends Model {
 
 		$sql = new Sql();
 
-		$results = $sql->select("CALL sp_registro_chamado(:id_usuario,:problema,:observacao,:situacao)", array(
+		$results = $sql->select("CALL sp_registro_chamado(:id_usuario,:problema,:observacao,:situacao,:solucao)", array(
 			":id_usuario"=>$this->getid_usuario(),
 			":problema"=>$this->getproblema(),
 			":observacao"=>$this->getobservacao(),
 			":situacao"=>$this->getsituacao(),
+			":solucao"=>$this->getsolucao()
 			
 		));
 
@@ -166,6 +167,22 @@ class Chamado extends Model {
 
 	}
 
+	
+	//Método para Atualizar a solução dos chamados dos chamados
+	public function editarSolucao()
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("CALL sp_editar_solucao(:id_chamado,:solucao)", [
+			':id_chamado'=>$this->getid_chamado(),
+			':solucao'=>$this->getsolucao()	
+		]);
+
+		$this->setData($results[0]);	
+
+	}
+
 
 
 	//Método que seleciona todos chamados passando a ID por parâmetro
@@ -180,7 +197,11 @@ class Chamado extends Model {
 
 		$this->setData($results[0]);
 
-		return ['value'=>(int)$results[0]["id_chamado"]];
+		return ['value_id'=>(int)$results[0]["id_chamado"],
+				'value_solucao'=>$results[0]["solucao"],
+				'value_problema'=>$results[0]["problema"],
+				'value_data_registro'=>$results[0]["data_registro"]
+				];
 
 	}
 

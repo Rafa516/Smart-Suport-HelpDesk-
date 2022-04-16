@@ -58,6 +58,7 @@
        <a href="/admin"><i class="fas fa-desktop"></i><span>Painel de Controle</span></a>
        <a href="/admin/usuarios"><i class="fas fa-users"></i><span>Usuários</span></a>
       <a href="/admin/chamados"><i class="fa fa-table"></i><span>Todos Chamados</span></a>
+      <a href="/admin/chamados-capturados"><i class="fa fa-check"></i><span>Chamados capturados</span></a>
       <a href="/admin/perfil"><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
     </div>
   </div>
@@ -80,6 +81,7 @@
    <a href="/admin"><i class="fas fa-desktop"></i><span>Painel de Controle</span></a>
     <a href="/admin/usuarios"><i class="fas fa-users"></i><span>Usuários</span></a>
       <a href="/admin/chamados"><i class="fa fa-table"></i><span>Todos Chamados</span></a>
+      <a href="/admin/chamados-lcapturados"><i class="fa fa-check"></i><span>Chamados capturados</span></a>
       <a href="/admin/perfil"><i class="fas fa-info-circle"></i><span>Meu Perfil</span></a>
   </div>
   <!--sidebar end-->

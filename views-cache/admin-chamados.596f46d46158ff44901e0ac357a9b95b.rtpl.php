@@ -58,6 +58,7 @@
                     <th><center>Fotos</th>
                      <th><center>Situação</th>
                     <th><center>Data de Registro</th>
+                    <th><center>Solução</th>
                     <th><center>Excluir</th>
 
                   </tr>
@@ -92,21 +93,52 @@
                       <?php } ?>
 
                      <td><br><center>
-                      <?php if( $value1["situacao"] == 'Pendente' ){ ?>
-
+                      <?php if( $value1["situacao"] == 'Pendente' && $value1["solucao"] != '' ){ ?>
 
 
                           <a style="width: 80px;" href="/admin/chamado-situacao/<?php echo $value1["id_chamado"]; ?>" onclick="return confirm('Deseja alterar a situação do chamado nº <?php echo $value1["id_chamado"]; ?>?')" type="button" class="btn btn-outline-danger btn-sm ">Pendente</a></td>
-                      <?php }else{ ?>
+                      
+
+                      <?php }elseif( $value1["situacao"] == 'Finalizado' ){ ?>
 
                         <a style="width: 80px;color: white;" type="button" class="btn btn-success btn-sm "><b>Finalizado</b></a></td>
+                
+
+                       <?php }else{ ?>
+
+                       <a style="width: 80px;" href="/admin/chamados" onclick="return confirm('A situação do chamado só pode ser alterada se houver uma solução')" type="button" class="btn btn-outline-danger btn-sm ">Pendente</a></td>
+
                       <?php } ?>
 
                       </td>
-                 
+                      
+                      
 
                     <td><br><center><?php echo formatDate($value1["data_registro"]); ?></td>
-                    <td><br><center> <a style="width: 80px;" href="/admin/chamados/delete/<?php echo $value1["id_chamado"]; ?>"  onclick="return confirm('Deseja realmente excluir o chamado nº <?php echo $value1["id_chamado"]; ?>?')" class="btn btn-danger btn-sm"> Excluir</a></td>
+                    <td><br><center>
+                      <?php if( $value1["situacao"] == 'Pendente' && $value1["solucao"] == '' ){ ?>
+
+                     <a style="width: 80px;" href="/admin/chamado-solucao/<?php echo $value1["id_chamado"]; ?>" onclick="return confirm('Deseja adicionar uma solução do chamado nº <?php echo $value1["id_chamado"]; ?>?')" type="button" class="btn btn-outline-warning btn-sm ">Adicionar</a></td></center> 
+                        <?php } ?>
+
+
+                        <?php if( $value1["situacao"] == 'Finalizado' ){ ?>
+
+                       <a style="width: 80px;" href="/admin/chamado-solucao-finalizado/<?php echo $value1["id_chamado"]; ?>"   class="btn btn-info btn-sm">Verificar</a>
+                        <?php } ?>
+
+
+                        <?php if( $value1["solucao"] != '' && $value1["situacao"] == 'Pendente'  ){ ?>
+
+                        <a style="width: 80px;" href="/admin/chamado-solucao/<?php echo $value1["id_chamado"]; ?>"   class="btn btn-success btn-sm">Editar</a>
+                        <?php } ?>
+
+                    </td>
+
+                    <td><br><center><a style="width: 80px;" href="/admin/chamados/delete/<?php echo $value1["id_chamado"]; ?>"  onclick="return confirm('Deseja realmente excluir o chamado nº <?php echo $value1["id_chamado"]; ?>?')" class="btn btn-danger btn-sm"> Excluir</a></td>
+
+                       
+
                    
                    
                   </tr>

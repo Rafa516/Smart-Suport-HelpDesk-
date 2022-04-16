@@ -1,16 +1,17 @@
-<div class="content">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><div class="content">
     <div class="content-inside">
         <div class="my-4">
             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a style="background-color: #01A9DB;color: white" class="nav-link active" id="home-tab"
-                        data-toggle="tab" role="tab" aria-controls="home" aria-selected="false"><b>Situação do chamado {$id_chamado.value_id} </b></a>
+                        data-toggle="tab" role="tab" aria-controls="home" aria-selected="false"><b>Situação do chamado <?php echo $id_chamado["value_id"]; ?> </b></a>
                 </li>
             </ul>
 
-           {if="$chamadoSituacao.value == 'Pendente'"}
+           <?php if( $chamadoSituacao["value"] == 'Pendente' ){ ?>
 
-           <form class="form-group" action="/admin/chamado/atualizar-situacao/{$id_chamado.value_id}" method="post">
+
+           <form class="form-group" action="/admin/chamado/atualizar-situacao/<?php echo $id_chamado["value_id"]; ?>" method="post">
            <div class="form-group">
                 <select class="form-control " name="situacao">
                     <option value="Pendente">Pendente</option>
@@ -21,9 +22,10 @@
               <input class="btn btn-primary btn btn-block" type="submit" value="Alterar">
            </form>
 
-           {else}
+           <?php }else{ ?>
 
-             <form class="form-group" action="/admin/chamado/atualizar-situacao/{$id_chamado.value_id}" method="post">
+
+             <form class="form-group" action="/admin/chamado/atualizar-situacao/<?php echo $id_chamado["value_id"]; ?>" method="post">
            <div class="form-group">
                 <select class="form-control " name="situacao">
                     <option value="Finalizado">Finalizado</option>
@@ -34,7 +36,8 @@
               <input class="btn btn-primary btn btn-block" type="submit" value="Alterar">
            </form>
 
-         {/if}
+         <?php } ?>
+
 
 
             <hr class="my-4" />

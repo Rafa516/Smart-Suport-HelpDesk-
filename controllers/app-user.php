@@ -172,6 +172,26 @@ $app->get('/usuario/meus-chamados', function() {
 
 });
 
+//---------ROTA PARA A PÁGINA DE SOLUÇÃO DOS CHAMADOS ---------------------//
+
+$app->get('/usuario/chamado-solucao/:id_chamado', function($id_chamado) {  
+
+
+	Usuario::verificaLogin();
+
+	$chamado = new Chamado();
+
+	$page = new Page();
+
+	$page->setTpl("usuario-chamado-solucao",[
+		"id_chamado"=>$chamado->get((int)$id_chamado),
+		"solucao"=>$chamado->get((int)$id_chamado),
+		"problema"=>$chamado->get((int)$id_chamado),
+		"data_registro"=>$chamado->get((int)$id_chamado)	
+	]);
+
+});
+
 //---------ROTA PARA A PÁGINA DAS IMAGENS DO CHAMADO----------------------//
 
 $app->get('/usuario/meus-chamados/imagens/:id_chamado', function($id_chamado) {  

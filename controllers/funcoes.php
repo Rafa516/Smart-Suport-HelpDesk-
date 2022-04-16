@@ -80,6 +80,111 @@ use \Projeto\Model\Chamado;
 
 	   	return  $total['nome'];
 	}
+
+	function average(){
+
+		$result = $media['avaliactions'];
+
+		if($result == 0)
+		{
+	    	return "<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>" ;
+		}
+		else if($result <= 0.9)
+		{
+	    	return "<i style='color:#FFD600;'class='fa fa-star-half-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>	                                                         
+			    	&nbsp<b>".number_format($result, 1, '.', '')."</b>" ;
+		}
+		else if($result <= 1.0)
+		{
+	    	return "<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>	                                                         
+			    	&nbsp<b>".number_format($result, 1, '.', '')."</b>" ;
+		}
+		else if($result <= 1.9)
+		{
+	    	return "<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-half-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>	                                                         
+			    	&nbsp<b>".number_format($result, 1, '.', '')."</b>" ;
+		}
+		else if($result <= 2.0)
+		{
+	    	return "<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>	                                                         
+			    	&nbsp<b>".number_format($result, 1, '.', '')."</b>" ;
+		}
+		else if($result <= 2.9)
+		{
+	    	return "<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-half-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>	                                                         
+			    	&nbsp<b>".number_format($result, 1, '.', '')."</b>" ;
+		}
+		else if($result <= 3.0)
+		{
+	    	return "<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>	                                                         
+			    	&nbsp<b>".number_format($result, 1, '.', '')."</b>" ;
+		}
+		else if($result <= 3.9)
+		{
+	    	return "<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-half-o'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>	                                                         
+			    	&nbsp<b>".number_format($result, 1, '.', '')."</b>" ;
+		}
+		else if($result <= 4.0)
+		{
+	    	return "<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-o'></i>	                                                         
+			    	&nbsp<b>".number_format($result, 1, '.', '')."</b>" ;
+		}
+		else if($result <= 4.9)
+		{
+	    	return "<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star-half-o'></i>	                                                         
+			    	&nbsp<b>".number_format($result, 1, '.', '')."</b>" ;
+		}
+		else 
+		{
+	    	return "<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>
+			    	<i style='color:#FFD600;'class='fa fa-star'></i>	                                                         
+			    	&nbsp<b>".number_format($result, 1, '.', '')."</b>" ;
+		}
+
+	}
 	
 
 ?>

@@ -376,6 +376,50 @@ $app->get('/admin/chamados-finalizados', function() {
 
 });
 
+//---------ROTA PARA A PÁGINA DOS CHAMADOS DOS PROPIETÁRIOS ADMIN----------------------//
+$app->get('/admin/chamados-capturados', function() {  
+
+
+	Usuario::verificaLoginAdmin();
+
+	$usuario = Usuario::getFromSession();
+
+
+	$search = (isset($_GET['search'])) ? $_GET['search'] : "";
+	$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+
+	if ($search != '') {
+
+		$pagination = $usuario->getPageSearch($search, $page);
+
+	} else {
+
+		$pagination = $usuario->getPage($page);
+
+	}
+
+	$pages = [];
+
+	for ($i=1; $i <= $pagination['pages']; $i++) { 
+		array_push($pages, [
+			'link'=>'/admin/chamados-capturados?page='.$i,
+			'page'=>$i,
+			'search'=>$search,
+		]);
+	}
+
+	$page = new PageAdmin();
+
+	$page->setTpl("admin-chamados-capturados",[
+		
+		"chamados"=>$pagination['data'],
+		"search"=>$search,
+		'profileMsg'=>usuario::getSuccess(),
+		"pages"=>$pages
+	]);
+
+});
+
 //---------ROTA PARA A PÁGINA DAS IMAGENS---------------------//
 
 $app->get('/admin/chamados/imagens/:id_chamado', function($id_chamado) {  
@@ -432,6 +476,62 @@ $app->post("/admin/chamado/atualizar-situacao/:id_chamado",function($id_chamado)
  	exit;
 });
 
+//---------ROTA PARA A PÁGINA DE SOLUÇÃO DOS CHAMADOS ---------------------//
+
+$app->get('/admin/chamado-solucao/:id_chamado', function($id_chamado) {  
+
+
+	Usuario::verificaLoginAdmin();
+
+	$chamado = new Chamado();
+
+	$page = new PageAdmin();
+
+	$page->setTpl("admin-solucao-chamado",[
+		"id_chamado"=>$chamado->get((int)$id_chamado),
+		"solucao"=>$chamado->get((int)$id_chamado)	
+	]);
+
+});
+
+
+//---------ROTA PARA A ALTERAÇÃO DA SOLUÇÃO ---------------------//
+
+$app->post("/admin/chamado/atualizar-solucao/:id_chamado",function($id_chamado){
+
+	$chamado = new Chamado();
+
+	$chamado->get((int)$id_chamado);
+
+	$chamado->setData($_POST);
+
+	$chamado->editarSolucao();
+
+	Usuario::setSuccess("Solução incluída com Sucesso");
+
+	header("Location: /admin/chamados");
+ 	exit;
+});
+
+//---------ROTA PARA A PÁGINA DE SOLUÇÃO DOS CHAMADOS FINALIZADOS ---------------------//
+
+$app->get('/admin/chamado-solucao-finalizado/:id_chamado', function($id_chamado) {  
+
+
+	Usuario::verificaLoginAdmin();
+
+	$chamado = new Chamado();
+
+	$page = new PageAdmin();
+
+	$page->setTpl("admin-solucao-chamado-finalizado",[
+		"id_chamado"=>$chamado->get((int)$id_chamado),
+		"solucao"=>$chamado->get((int)$id_chamado),
+		"problema"=>$chamado->get((int)$id_chamado),
+		"data_registro"=>$chamado->get((int)$id_chamado)	
+	]);
+
+});
 
 
 //---------ROTA PARA  A PÁGINA DO PERFIL DO USUÁRIO----------------------//
